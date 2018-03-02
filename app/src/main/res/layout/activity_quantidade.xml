@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="vivacity.com.br.sanbotcafe.QuantidadeActivity">
+
+    <ImageView
+        android:id="@+id/iv_cesta_mercado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_cesta_mercado" />
+
+    <TextView
+        android:id="@+id/tv_quantidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_cesta_mercado"
+        android:layout_centerHorizontal="true"
+        android:text="@string/tv_quantidade"
+        android:textColor="#000000"
+        android:textSize="40sp" />
+
+
+    <LinearLayout
+        android:id="@+id/escolha_quantidade_liner_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_quantidade"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_uma_quantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="quantidadeEscolhida"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btn_duas_quantidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="quantidadeEscolhida"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btn_tres_quantidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="quantidadeEscolhida"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/btn_quatro_quantidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="quantidadeEscolhida"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/btn_cinco_quantidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="quantidadeEscolhida"
+            android:text="5" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1150dp"
+        android:layout_marginTop="660dp"
+        android:onClick="confirmarPedido"
+        android:text="@string/btn_proximo" />
+
+</RelativeLayout>

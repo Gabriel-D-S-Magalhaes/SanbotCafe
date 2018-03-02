@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sanbot Café</string>
+
+    <!--MainActivity-->
+    <string name="btn_start">Pedir</string>
+
+    <!--CategoriaBebidasActivity-->
+    <string name="bebidas_alcoolicas">Bebidas alcoólicas</string>
+    <string name="bebidas_sem_alcool">Bebidas Sem Álcool</string>
+
+
+    <!--IdadeAlertaActivity-->
+    <string name="alert_18">Você deve ter 18 anos de idade ou mais para comprar bebida(s) alcoólica(s).</string>
+    <string name="maior_18">Tenho 18 anos ou mais</string>
+    <string name="menor_18">Não tenho 18 anos</string>
+
+    <!--Bebidas alcoólicas-->
+    <string name="vinho">Vinho</string>
+    <string name="cerveja">Cerveja</string>
+
+    <!--Bebidas Sem Álcool-->
+    <string name="cha">Chá</string>
+    <string name="cafe">Café</string>
+    <string name="suco">Sucos</string>
+    <string name="refri">Refrigerante</string>
+    <string name="agua">Água</string>
+
+    <!--QuantidadeActivity-->
+    <string name="tv_quantidade">Quantidade:</string>
+    <string name="tv_algo_mais">Algo mais?</string>
+    <string name="btn_proximo">Próximo >></string>
+
+    <!--ConfirmarPedidoActivity-->
+    <string name="confirm_pedido">Confirmar</string>
+    <string name="cancel_pedido">Cancelar</string>
+
+
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sanbot Cafe</string>
+    <string name="tv_desconto">Desconto R$</string>
+    <string name="tv_total">Total R$</string>
+</resources>

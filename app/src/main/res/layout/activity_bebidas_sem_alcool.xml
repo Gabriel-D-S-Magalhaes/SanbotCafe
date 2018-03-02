@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/relative_layout_2"
+        android:layout_marginStart="200dp">
+
+        <ImageView
+            android:id="@+id/iv_cha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:onClick="escolherQtdBebidasSemAlcool"
+            android:src="@drawable/ic_tea" />
+
+        <TextView
+            android:id="@+id/tv_cha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_cha"
+            android:layout_centerHorizontal="true"
+            android:text="@string/cha"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/iv_agua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cha"
+            android:layout_centerHorizontal="true"
+            android:onClick="escolherQtdBebidasSemAlcool"
+            android:src="@drawable/ic_agua" />
+
+        <TextView
+            android:id="@+id/tv_agua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_agua"
+            android:layout_centerHorizontal="true"
+            android:text="@string/agua"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/iv_cafe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:onClick="escolherQtdBebidasSemAlcool"
+            android:src="@drawable/ic_cafe" />
+
+        <TextView
+            android:id="@+id/tv_cafe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_cafe"
+            android:layout_centerHorizontal="true"
+            android:text="@string/cafe"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/iv_refri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_cafe"
+            android:layout_centerHorizontal="true"
+            android:onClick="escolherQtdBebidasSemAlcool"
+            android:src="@drawable/ic_refri" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_refri"
+            android:layout_centerHorizontal="true"
+            android:text="@string/refri"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/relative_layout_2"
+        android:layout_marginEnd="200dp">
+
+        <ImageView
+            android:id="@+id/iv_suco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="escolherQtdBebidasSemAlcool"
+            android:src="@drawable/ic_sucos" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_suco"
+            android:layout_centerHorizontal="true"
+            android:text="@string/suco"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

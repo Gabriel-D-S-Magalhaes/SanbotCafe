@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="vivacity.com.br.sanbotcafe.CategoriaBebidasActivity">
+
+    <LinearLayout
+        android:id="@+id/escolha_bebidas_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_bebidas_com_alcool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="100dp"
+            android:onClick="categoriaEscolhida"
+            android:src="@drawable/ic_drink_alcohol" />
+
+
+        <ImageView
+            android:id="@+id/iv_bebidas_sem_alcool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:onClick="categoriaEscolhida"
+            android:src="@drawable/ic_drink_free_alcohol" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/labels_escolha_bebidas_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/escolha_bebidas_linear_layout"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="45dp"
+            android:text="@string/bebidas_alcoolicas"
+            android:textColor="#000000"
+            android:textSize="27sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:text="@string/bebidas_sem_alcool"
+            android:textColor="#000000"
+            android:textSize="27sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
