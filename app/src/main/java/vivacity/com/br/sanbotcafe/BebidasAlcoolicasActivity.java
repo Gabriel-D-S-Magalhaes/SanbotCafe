@@ -9,7 +9,6 @@ import android.view.WindowManager;
 public class BebidasAlcoolicasActivity extends AppCompatActivity {
 
     public static final String TAG = BebidasAlcoolicasActivity.class.getSimpleName();
-    private Bebidas bebidaAlcoolicaEscolhida = new Bebidas();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +29,10 @@ public class BebidasAlcoolicasActivity extends AppCompatActivity {
 
             case R.id.iv_vinho:
 
-                bebidaAlcoolicaEscolhida.setNome("Vinho");
-                bebidaAlcoolicaEscolhida.setPrecoUnit(10.00);
                 break;
 
             case R.id.iv_cerveja:
 
-                bebidaAlcoolicaEscolhida.setNome("Cerveja");
-                bebidaAlcoolicaEscolhida.setPrecoUnit(5.00);
                 break;
         }
 

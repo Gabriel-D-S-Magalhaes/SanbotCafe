@@ -8,11 +8,7 @@ import android.view.WindowManager;
 
 public class ConfirmarPedidoActivity extends AppCompatActivity {
 
-    //private static Pedido pedido = new Pedido();
-
-    //public static Pedido getPedido() {
-        //return pedido;
-    //}
+    private Pedido pedido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +16,25 @@ public class ConfirmarPedidoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_confirmar_pedido);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
+    }
 
-        //pedido.imprimirTicket();
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        this.pedido = QuantidadeActivity.getPedido();
+
+        if (this.pedido != null) {
+            this.pedido.imprimirTicket();
+        }
     }
 
     public void confirmCancelOrder(View view) {
+
         switch (view.getId()) {
+
             case R.id.btn_cancel:
+
                 break;
 
             case R.id.btn_confirm:

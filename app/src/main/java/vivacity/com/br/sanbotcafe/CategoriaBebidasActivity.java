@@ -24,7 +24,6 @@ public class CategoriaBebidasActivity extends AppCompatActivity {
 
             case R.id.iv_bebidas_com_alcool:
 
-                //escolherBebidas.setClass(getApplicationContext(), BebidasAlcoolicasActivity.class);
                 escolherBebidas.setClass(getApplicationContext(), IdadeAlertaActivity.class);
                 break;
 

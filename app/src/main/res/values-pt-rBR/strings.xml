@@ -15,11 +15,11 @@
     <string name="maior_18">Tenho 18 anos ou mais</string>
     <string name="menor_18">Não tenho 18 anos</string>
 
-    <!--Bebidas alcoólicas-->
+    ItensDePedidoidas alcoólicas-->
     <string name="vinho">Vinho</string>
     <string name="cerveja">Cerveja</string>
 
-    <!--Bebidas Sem Álcool-->
+    ItensDePedidoidas Sem Álcool-->
     <string name="cha">Chá</string>
     <string name="cafe">Café</string>
     <string name="suco">Sucos</string>
