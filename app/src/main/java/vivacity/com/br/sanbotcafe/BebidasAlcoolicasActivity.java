@@ -9,6 +9,8 @@ import android.view.WindowManager;
 public class BebidasAlcoolicasActivity extends AppCompatActivity {
 
     public static final String TAG = BebidasAlcoolicasActivity.class.getSimpleName();
+    public static final String EXTRA_ESCOLHIDA = BebidasAlcoolicasActivity.class.getPackage()
+            .getName().concat(".EXTRA_ESCOLHIDA");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +31,15 @@ public class BebidasAlcoolicasActivity extends AppCompatActivity {
 
             case R.id.iv_vinho:
 
+                quantificar.putExtra(EXTRA_ESCOLHIDA, "Vinho");
                 break;
 
             case R.id.iv_cerveja:
 
+                quantificar.putExtra(EXTRA_ESCOLHIDA, "Cerveja");
                 break;
         }
 
-        //ConfirmarPedidoActivity.getPedido().addItem(bebidaAlcoolicaEscolhida);
         startActivity(quantificar);
     }
 }

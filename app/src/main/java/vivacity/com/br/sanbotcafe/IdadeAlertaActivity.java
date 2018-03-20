@@ -16,6 +16,12 @@ public class IdadeAlertaActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+
     public void maiorDeIdade(View view) {
 
         Intent escolha = new Intent();

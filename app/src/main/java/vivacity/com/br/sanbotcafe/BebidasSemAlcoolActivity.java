@@ -38,12 +38,10 @@ public class BebidasSemAlcoolActivity extends AppCompatActivity {
 
             case R.id.iv_cafe:
 
-
                 quantificar.putExtra(EXTRA_ESCOLHIDA, "Café");
                 break;
 
             case R.id.iv_suco:
-
 
                 quantificar.putExtra(EXTRA_ESCOLHIDA, "Suco");
                 break;
