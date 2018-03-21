@@ -75,4 +75,11 @@ public class Pedido {
                     + " | Preço unitário: R$ " + itemDePedido.getPrecoUnit());
         }
     }
+
+    public void fecharPedido() {
+
+        this.itensDePedidos.removeAll(this.itensDePedidos);
+
+        this.precoFinal = 0.0;
+    }
 }

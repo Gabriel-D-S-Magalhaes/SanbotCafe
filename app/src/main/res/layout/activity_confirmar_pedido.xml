@@ -4,22 +4,33 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
+    <TextView
+        android:id="@+id/titulo_pedido_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="Pedido"
+        android:textColor="#000000"
+        android:textSize="27sp" />
 
-    <ScrollView
+
+    <ListView
+        android:id="@+id/itens_list_view"
         android:layout_width="1100dp"
         android:layout_height="550dp"
-        android:layout_above="@id/total_e_desconto_linear_layout"
-        android:layout_centerHorizontal="true">
+        android:layout_below="@+id/titulo_pedido_tv"
+        android:layout_centerHorizontal="true"
+        android:divider="#0000ff"
+        android:dividerHeight="1dp"
+        android:gravity="center"
+        android:isScrollContainer="true"
+        android:scrollbars="vertical"
+        android:stretchMode="columnWidth">
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
+    </ListView>
 
-        </ListView>
-
-
-    </ScrollView>
 
     <LinearLayout
         android:id="@+id/total_e_desconto_linear_layout"

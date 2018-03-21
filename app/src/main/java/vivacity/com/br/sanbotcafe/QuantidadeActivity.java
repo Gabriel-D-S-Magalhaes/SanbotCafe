@@ -41,7 +41,7 @@ public class QuantidadeActivity extends AppCompatActivity implements FecharPedid
     }
 
     public static void fecharPedido() {
-        QuantidadeActivity.pedido = null;
+        QuantidadeActivity.pedido.fecharPedido();
     }
 
     @Override
