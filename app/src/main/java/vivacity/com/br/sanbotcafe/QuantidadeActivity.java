@@ -11,7 +11,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class QuantidadeActivity extends AppCompatActivity implements FecharPedidoDialogFragment
+import com.qihancloud.opensdk.base.TopBaseActivity;
+import com.qihancloud.opensdk.beans.FuncConstant;
+import com.qihancloud.opensdk.function.unit.SystemManager;
+
+public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoDialogFragment
         .FecharPedidoListener {
 
     private static final String TAG = QuantidadeActivity.class.getSimpleName();
@@ -38,6 +42,8 @@ public class QuantidadeActivity extends AppCompatActivity implements FecharPedid
     public static final String EXTRA_PEDIDO = QuantidadeActivity.class.getPackage().getName()
             .concat(".EXTRA_PEDIDO");
 
+    private SystemManager systemManager;
+
     public static Pedido getPedido() {
         return pedido;
     }
@@ -47,7 +53,7 @@ public class QuantidadeActivity extends AppCompatActivity implements FecharPedid
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quantidade);
 
@@ -56,6 +62,8 @@ public class QuantidadeActivity extends AppCompatActivity implements FecharPedid
         this.linearLayout = (LinearLayout) findViewById(R.id.escolha_quantidade_liner_layout);
         this.textView = (TextView) findViewById(R.id.tv_quantidade);
         this.btnNext = (Button) findViewById(R.id.btn_next);
+
+        this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
     }
 
     @Override
@@ -71,6 +79,11 @@ public class QuantidadeActivity extends AppCompatActivity implements FecharPedid
 
         // Inicializa a Intent para ir para a próxima activity
         this.confirmarPedido = new Intent(getApplicationContext(), ConfirmarPedidoActivity.class);
+    }
+
+    @Override
+    protected void onMainServiceConnected() {
+        this.systemManager.switchFloatBar(false, getClass().getName());
     }
 
     /**

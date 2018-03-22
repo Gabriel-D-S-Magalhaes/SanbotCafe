@@ -6,19 +6,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-public class IdadeAlertaActivity extends AppCompatActivity {
+import com.qihancloud.opensdk.base.TopBaseActivity;
+import com.qihancloud.opensdk.beans.FuncConstant;
+import com.qihancloud.opensdk.function.unit.SystemManager;
+
+public class IdadeAlertaActivity extends TopBaseActivity {
+
+    private SystemManager systemManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idade_alerta);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
+        this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    @Override
+    protected void onMainServiceConnected() {
+        this.systemManager.switchFloatBar(false, getClass().getName());
     }
 
 

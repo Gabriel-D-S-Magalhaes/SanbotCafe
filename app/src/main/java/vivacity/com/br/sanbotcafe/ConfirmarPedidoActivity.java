@@ -21,23 +21,30 @@ import android.widget.ResourceCursorAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import com.qihancloud.opensdk.base.TopBaseActivity;
+import com.qihancloud.opensdk.beans.FuncConstant;
+import com.qihancloud.opensdk.function.unit.SystemManager;
+
 import java.text.NumberFormat;
 import java.util.Arrays;
 
-public class ConfirmarPedidoActivity extends AppCompatActivity {
+public class ConfirmarPedidoActivity extends TopBaseActivity {
 
     private static final String TAG = ConfirmarPedidoActivity.class.getSimpleName();
 
     private Pedido pedido;
     private ListView itensListView;
+    private SystemManager systemManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmar_pedido);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
         this.itensListView = (ListView) findViewById(R.id.itens_list_view);
+
+        this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
     }
 
     @Override
@@ -67,6 +74,11 @@ public class ConfirmarPedidoActivity extends AppCompatActivity {
 
             this.itensListView.setAdapter(adapter);
         }
+    }
+
+    @Override
+    protected void onMainServiceConnected() {
+        this.systemManager.switchFloatBar(false, getClass().getName());
     }
 
     public void confirmCancelOrder(View view) {

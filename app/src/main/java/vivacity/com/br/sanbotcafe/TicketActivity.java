@@ -15,17 +15,22 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qihancloud.opensdk.base.TopBaseActivity;
+import com.qihancloud.opensdk.beans.FuncConstant;
+import com.qihancloud.opensdk.function.unit.SystemManager;
+
 import org.xmlpull.v1.XmlPullParser;
 
-public class TicketActivity extends AppCompatActivity {
+public class TicketActivity extends TopBaseActivity {
 
     private TextView contador;
     private TableLayout tableLayout;
     private TableRow tableRow;
     private Pedido pedido;
+    private SystemManager systemManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket);
 
@@ -33,6 +38,8 @@ public class TicketActivity extends AppCompatActivity {
 
         this.contador = (TextView) findViewById(R.id.tv_contador);
         this.tableLayout = (TableLayout) findViewById(R.id.pedido_tbl);
+
+        this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
     }
 
     @Override
@@ -61,6 +68,11 @@ public class TicketActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         }.start();
+    }
+
+    @Override
+    protected void onMainServiceConnected() {
+        this.systemManager.switchFloatBar(false, getClass().getName());
     }
 
     private void printOrder() {
