@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class QuantidadeActivity extends AppCompatActivity implements FecharPedid
 
     private LinearLayout linearLayout;// Linear layout que agrupa os botões 1, 2, 3, 4 ou 5 quantidade
     private TextView textView;// Texto será modificado de "Quantidade:" para "Algo mais?"
+    private Button btnNext;// Começa invisible, mas após escolhida a qtd. fica visible
 
     private String bebida;// Armazena a bebida escolhida na tela anterior
 
@@ -51,8 +53,9 @@ public class QuantidadeActivity extends AppCompatActivity implements FecharPedid
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
 
-        linearLayout = (LinearLayout) findViewById(R.id.escolha_quantidade_liner_layout);
-        textView = (TextView) findViewById(R.id.tv_quantidade);
+        this.linearLayout = (LinearLayout) findViewById(R.id.escolha_quantidade_liner_layout);
+        this.textView = (TextView) findViewById(R.id.tv_quantidade);
+        this.btnNext = (Button) findViewById(R.id.btn_next);
     }
 
     @Override
@@ -105,7 +108,8 @@ public class QuantidadeActivity extends AppCompatActivity implements FecharPedid
                 break;
         }
 
-        linearLayout.setVisibility(View.INVISIBLE);// Deixa o layout dos botões invisîvel
+        this.linearLayout.setVisibility(View.INVISIBLE);// Deixa o layout dos botões invisîvel
+        this.btnNext.setVisibility(View.VISIBLE);// Deixa o botão "Próximo" visível
 
         // Se nenhum pedido foi aberto
         if (pedido == null) {

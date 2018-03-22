@@ -4,26 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_background"
     android:orientation="horizontal"
     tools:context="vivacity.com.br.sanbotcafe.MainActivity">
 
+    <ImageView
+        android:id="@+id/logo_iv"
+        android:layout_width="192dp"
+        android:layout_height="192dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="90dp"
+        android:src="@drawable/ic_app_logo" />
+
     <Button
         android:id="@+id/btn_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#42A5F5"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_alignEnd="@+id/logo_iv"
+        android:layout_alignStart="@+id/logo_iv"
+        android:layout_below="@+id/logo_iv"
+        android:layout_marginTop="90dp"
+        android:background="#3e1e00"
+        android:onClick="onClickedViews"
         android:text="@string/btn_start"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="25sp"
-        android:textStyle="normal"
-        android:onClick="onClickedViews"/>
+        android:textSize="27sp"
+        android:textStyle="normal" />
 
     <ImageView
         android:id="@+id/btn_exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1105dp"
-        android:src="@drawable/ic_exit_black" />
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="exitApp"
+        android:src="@drawable/ic_exit_white" />
 
 </RelativeLayout>

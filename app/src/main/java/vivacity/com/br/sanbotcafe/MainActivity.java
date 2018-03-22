@@ -39,4 +39,15 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    public void exitApp(View view) {
+
+        switch (view.getId()) {
+            case R.id.btn_exit:
+                // Sair do app
+                //finish();
+                this.finishAffinity();
+                break;
+        }
+    }
 }

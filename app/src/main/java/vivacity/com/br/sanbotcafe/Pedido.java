@@ -78,7 +78,7 @@ public class Pedido {
 
     public void fecharPedido() {
 
-        this.itensDePedidos.removeAll(this.itensDePedidos);
+        this.itensDePedidos.clear();
 
         this.precoFinal = 0.0;
     }
