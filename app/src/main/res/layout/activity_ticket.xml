@@ -7,35 +7,58 @@
 
     <TableLayout
         android:id="@+id/pedido_tbl"
-        android:layout_width="match_parent"
+
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="45dp"
-        android:layout_marginStart="45dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
+
         android:gravity="center"
+
         android:scrollbars="vertical">
 
-        <TableRow android:gravity="center">
+        <TableRow
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:paddingEnd="45dp"
+
                 android:text="Itens"
+                android:textAlignment="viewStart"
                 android:textColor="#000000"
                 android:textSize="27sp" />
 
             <TextView
                 android:paddingEnd="45dp"
+
                 android:text="Qtd."
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="27sp" />
 
             <TextView
                 android:text="Preço"
+                android:textAlignment="viewEnd"
                 android:textColor="#000000"
                 android:textSize="27sp" />
         </TableRow>
 
     </TableLayout>
+
+    <TextView
+        android:id="@+id/tv_total"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/pedido_tbl"
+        android:layout_below="@id/pedido_tbl"
+        android:layout_marginTop="45dp"
+
+        android:text="Total R$00,00"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="27sp" />
 
     <Button
         android:id="@+id/btn_novo_pedido"
@@ -49,9 +72,11 @@
         android:id="@+id/tv_contador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btn_novo_pedido"
+        android:layout_alignBottom="@id/btn_novo_pedido"
         android:layout_alignEnd="@id/btn_novo_pedido"
-        android:text="30"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="27sp" />
+
+
 </RelativeLayout>

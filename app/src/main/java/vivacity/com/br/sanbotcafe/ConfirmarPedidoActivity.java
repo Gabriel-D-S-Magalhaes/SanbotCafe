@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
@@ -19,6 +20,7 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
 
     private Pedido pedido;
     private ListView itensListView;
+    private TextView tvConfirmarTotal;
     private SystemManager systemManager;
 
     @Override
@@ -28,6 +30,7 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
         this.itensListView = (ListView) findViewById(R.id.itens_list_view);
+        this.tvConfirmarTotal = (TextView) findViewById(R.id.tv_confirmar_total);
 
         this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
     }
@@ -58,6 +61,9 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
                     R.layout.line_layout, cursor, fromColums, toViews, 0);
 
             this.itensListView.setAdapter(adapter);
+
+            this.pedido.calcularTotal();
+            this.tvConfirmarTotal.setText("Total: R$" + this.pedido.getPrecoFinal());
         }
     }
 

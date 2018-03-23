@@ -2,14 +2,14 @@ package vivacity.com.br.sanbotcafe;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Xml;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -19,13 +19,12 @@ import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
-import org.xmlpull.v1.XmlPullParser;
-
 public class TicketActivity extends TopBaseActivity {
 
     private TextView contador;
     private TableLayout tableLayout;
     private TableRow tableRow;
+    private TextView tvTotal;
     private Pedido pedido;
     private SystemManager systemManager;
 
@@ -38,6 +37,7 @@ public class TicketActivity extends TopBaseActivity {
 
         this.contador = (TextView) findViewById(R.id.tv_contador);
         this.tableLayout = (TableLayout) findViewById(R.id.pedido_tbl);
+        this.tvTotal = (TextView) findViewById(R.id.tv_total);
 
         this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
     }
@@ -84,35 +84,46 @@ public class TicketActivity extends TopBaseActivity {
 
         for (int i = 1; i <= this.pedido.getItensDePedidos().size(); i++) {
 
-            this.tableRow = new TableRow(getApplicationContext());
-            this.tableRow.setGravity(Gravity.CENTER);
+            this.tableRow = new TableRow(getApplicationContext());// New TableRow
+            this.tableRow.setGravity(Gravity.CENTER);// Setup gravity to center
+            this.tableRow.setOrientation(LinearLayout.HORIZONTAL);// Setup orientation
 
-            TextView nomeItem = new TextView(getApplicationContext());
-            nomeItem.setText(this.pedido.getItensDePedidos().get(i - 1).getNome());
+            TextView nomeItem = new TextView(getApplicationContext());// Instance a new TextView
+            /*Setup the TextView*/
+            nomeItem.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
             nomeItem.setTextColor(Color.BLACK);
             nomeItem.setTextSize(27);
-            nomeItem.setPadding(0, 0, 45, 0);
+            nomeItem.setText(this.pedido.getItensDePedidos().get(i - 1).getNome());
+            nomeItem.setPaddingRelative(0, 0, 45, 0);
 
-            this.tableRow.addView(nomeItem);
+            this.tableRow.addView(nomeItem);// Add the TextView to TableRow created
 
-            TextView quantidadeItem = new TextView(getApplicationContext());
-            quantidadeItem.setText(String.valueOf(this.pedido.getItensDePedidos().get(i - 1).getQuantidade()));
+            TextView quantidadeItem = new TextView(getApplicationContext());// Instance a new TextView
+            /*Setup the TextView*/
+            quantidadeItem.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             quantidadeItem.setTextColor(Color.BLACK);
             quantidadeItem.setTextSize(27);
-            quantidadeItem.setPadding(0, 0, 45, 0);
+            quantidadeItem.setText(String.valueOf(this.pedido.getItensDePedidos().get(i - 1).getQuantidade()));
+            quantidadeItem.setPaddingRelative(0, 0, 45, 0);
 
-            this.tableRow.addView(quantidadeItem);
+            this.tableRow.addView(quantidadeItem);// Add the TextView to TableRow created
 
-            TextView precoItens = new TextView(getApplicationContext());
-            precoItens.setText(String.valueOf(this.pedido.getItensDePedidos().get(i - 1).getQuantidade()
-                    * this.pedido.getItensDePedidos().get(i - 1).getPrecoUnit()));
+            TextView precoItens = new TextView(getApplicationContext());// Instance a new TextView
+            /*Setup the TextView*/
+            precoItens.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
             precoItens.setTextColor(Color.BLACK);
             precoItens.setTextSize(27);
+            precoItens.setText(String.valueOf(this.pedido.getItensDePedidos().get(i - 1).getQuantidade()
+                    * this.pedido.getItensDePedidos().get(i - 1).getPrecoUnit()));
 
+            // Add the TextView to TableRow created
             this.tableRow.addView(precoItens);
 
-            this.tableLayout.addView(this.tableRow, i);
+            this.tableLayout.addView(this.tableRow, i);// Add the TableRow created to TableLayout
         }
+
+        this.pedido.calcularTotal();
+        this.tvTotal.setText("Total: R$" + this.pedido.getPrecoFinal());
     }
 
     public void cancelOrder(View view) {

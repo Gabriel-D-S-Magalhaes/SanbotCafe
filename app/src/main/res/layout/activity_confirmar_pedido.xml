@@ -17,42 +17,56 @@
 
     <ListView
         android:id="@+id/itens_list_view"
+
         android:layout_width="1100dp"
-        android:layout_height="550dp"
+        android:layout_height="495dp"
         android:layout_below="@+id/titulo_pedido_tv"
         android:layout_centerHorizontal="true"
-        android:divider="#0000ff"
+
+        android:divider="#212121"
         android:dividerHeight="1dp"
+
         android:gravity="center"
+
         android:isScrollContainer="true"
+
         android:scrollbars="vertical"
+
         android:stretchMode="columnWidth">
 
 
     </ListView>
 
-
     <LinearLayout
         android:id="@+id/total_e_desconto_linear_layout"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btns_confirmar_cancelar"
-        android:layout_centerHorizontal="true"
+
+        android:layout_alignEnd="@id/itens_list_view"
+        android:layout_below="@id/itens_list_view"
+
         android:orientation="vertical">
 
-        <TextView
+        <!--TextView
             android:id="@+id/tv_desconto"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="@string/tv_desconto"
+            android:textAlignment="viewStart"
             android:textColor="#000000"
-            android:textSize="27sp" />
+            android:textSize="27sp" /-->
 
         <TextView
-            android:id="@+id/tv_total"
+            android:id="@+id/tv_confirmar_total"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="@string/tv_total"
+            android:textAlignment="viewStart"
             android:textColor="#000000"
             android:textSize="27sp" />
 
@@ -60,24 +74,42 @@
 
     <LinearLayout
         android:id="@+id/btns_confirmar_cancelar"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/total_e_desconto_linear_layout"
         android:layout_centerHorizontal="true">
 
         <Button
             android:id="@+id/btn_cancel"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:background="@drawable/transparent_bg"
+
             android:onClick="confirmCancelOrder"
-            android:text="@string/cancel_pedido" />
+
+            android:paddingEnd="45dp"
+
+            android:text="@string/cancel_pedido"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="27sp" />
 
         <Button
             android:id="@+id/btn_confirm"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/transparent_bg"
+
             android:onClick="confirmCancelOrder"
-            android:text="@string/confirm_pedido" />
+
+            android:paddingEnd="45dp"
+            android:text="@string/confirm_pedido"
+            android:textAlignment="center"
+            android:textSize="27sp" />
 
     </LinearLayout>
 
