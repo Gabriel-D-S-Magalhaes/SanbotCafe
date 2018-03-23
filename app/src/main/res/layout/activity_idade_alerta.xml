@@ -15,6 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/iv_proibido"
         android:layout_centerHorizontal="true"
+
+        android:layout_marginBottom="45dp"
+
         android:text="@string/alert_18"
         android:textColor="#000000"
         android:textSize="27sp"
@@ -24,21 +27,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/iv_proibido"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp">
 
         <Button
             android:id="@+id/btn_maior_de_idade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="45dp"
+            android:background="@drawable/transparent_bg"
             android:onClick="maiorDeIdade"
-            android:text="@string/maior_18" />
+            android:text="@string/maior_18"
+            android:textColor="#00C853"
+            android:textSize="27sp" />
 
         <Button
             android:id="@+id/btn_menor_de_idade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/transparent_bg"
             android:onClick="maiorDeIdade"
-            android:text="@string/menor_18" />
+            android:text="@string/menor_18"
+            android:textColor="#D50000"
+            android:textSize="27sp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -1,32 +1,17 @@
 package vivacity.com.br.sanbotcafe;
 
-import android.app.LoaderManager;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.MatrixCursor;
-import android.support.annotation.LayoutRes;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
-import android.util.LongSparseArray;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.ResourceCursorAdapter;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 
 import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
-
-import java.text.NumberFormat;
-import java.util.Arrays;
 
 public class ConfirmarPedidoActivity extends TopBaseActivity {
 

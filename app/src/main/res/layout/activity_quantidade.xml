@@ -24,7 +24,6 @@
         android:textColor="#000000"
         android:textSize="40sp" />
 
-
     <LinearLayout
         android:id="@+id/escolha_quantidade_liner_layout"
         android:layout_width="wrap_content"
@@ -68,18 +67,22 @@
             android:onClick="quantidadeEscolhida"
             android:text="5" />
 
-
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1150dp"
-        android:layout_marginTop="660dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="45dp"
+        android:layout_marginEnd="45dp"
         android:background="@drawable/transparent_bg"
         android:onClick="confirmarPedido"
         android:text="@string/btn_proximo"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="27sp"
         android:visibility="invisible" />
 
 </RelativeLayout>

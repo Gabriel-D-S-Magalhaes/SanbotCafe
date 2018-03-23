@@ -1,7 +1,6 @@
 package vivacity.com.br.sanbotcafe;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -44,27 +43,27 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity {
 
         switch (view.getId()) {
 
-            case R.id.iv_cha:
+            case R.id.tv_cha:
 
                 quantificar.putExtra(EXTRA_ESCOLHIDA, "Chá");
                 break;
 
-            case R.id.iv_cafe:
+            case R.id.tv_cafe:
 
                 quantificar.putExtra(EXTRA_ESCOLHIDA, "Café");
                 break;
 
-            case R.id.iv_suco:
+            case R.id.tv_suco:
 
                 quantificar.putExtra(EXTRA_ESCOLHIDA, "Suco");
                 break;
 
-            case R.id.iv_refri:
+            case R.id.tv_refri:
 
                 quantificar.putExtra(EXTRA_ESCOLHIDA, "Refrigerante");
                 break;
 
-            case R.id.iv_agua:
+            case R.id.tv_agua:
 
                 quantificar.putExtra(EXTRA_ESCOLHIDA, "Água");
                 break;
