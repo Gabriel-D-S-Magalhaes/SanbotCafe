@@ -26,63 +26,120 @@
 
     <LinearLayout
         android:id="@+id/escolha_quantidade_liner_layout"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_quantidade"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
+
+        android:gravity="center"
+        android:orientation="horizontal"
+
+        android:showDividers="middle">
 
         <Button
             android:id="@+id/btn_uma_quantidade"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+
+
+            android:background="#64B5F6"
+
             android:onClick="quantidadeEscolhida"
-            android:text="1" />
+
+            android:text="1"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="27sp" />
 
         <Button
             android:id="@+id/btn_duas_quantidades"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:background="#64B5F6"
+
             android:onClick="quantidadeEscolhida"
-            android:text="2" />
+
+            android:text="2"
+
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="27sp" />
 
         <Button
             android:id="@+id/btn_tres_quantidades"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+
+            android:background="#64B5F6"
+
             android:onClick="quantidadeEscolhida"
-            android:text="3" />
+
+            android:text="3"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="27sp" />
 
         <Button
             android:id="@+id/btn_quatro_quantidades"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+
+            android:background="#64B5F6"
+
+
             android:onClick="quantidadeEscolhida"
-            android:text="4" />
+
+            android:text="4"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="27sp" />
 
         <Button
             android:id="@+id/btn_cinco_quantidades"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
+            android:background="#64B5F6"
+
             android:onClick="quantidadeEscolhida"
-            android:text="5" />
+
+            android:text="5"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="27sp" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_next"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="45dp"
         android:layout_marginEnd="45dp"
+
         android:background="@drawable/transparent_bg"
+
         android:onClick="confirmarPedido"
+
         android:text="@string/btn_proximo"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="27sp"
+
         android:visibility="invisible" />
 
 </RelativeLayout>

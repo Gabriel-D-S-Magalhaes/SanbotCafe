@@ -50,31 +50,31 @@ public class ItensDePedido {
         switch (this.nome) {
 
             case "Vinho":
-                this.setPrecoUnit(7.00);
+                this.setPrecoUnit(TabelaDePrecos.VINHO);
                 break;
 
             case "Cerveja":
-                this.setPrecoUnit(5.00);
+                this.setPrecoUnit(TabelaDePrecos.CERVEJA);
                 break;
 
             case "Chá":
-                this.setPrecoUnit(3.00);
+                this.setPrecoUnit(TabelaDePrecos.CHA);
                 break;
 
             case "Café":
-                this.setPrecoUnit(3.00);
+                this.setPrecoUnit(TabelaDePrecos.CAFE);
                 break;
 
             case "Suco":
-                this.setPrecoUnit(7.00);
+                this.setPrecoUnit(TabelaDePrecos.SUCO);
                 break;
 
             case "Água":
-                this.setPrecoUnit(2.00);
+                this.setPrecoUnit(TabelaDePrecos.AGUA);
                 break;
 
             case "Refrigerante":
-                this.setPrecoUnit(3.50);
+                this.setPrecoUnit(TabelaDePrecos.REFRIGERANTE);
                 break;
 
             default:

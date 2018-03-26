@@ -6,36 +6,32 @@
 
     <TextView
         android:id="@+id/titulo_pedido_tv"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@id/itens_table_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+
         android:text="Pedido"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="27sp" />
 
-
-    <ListView
-        android:id="@+id/itens_list_view"
+    <TableLayout
+        android:id="@+id/itens_table_layout"
 
         android:layout_width="1100dp"
         android:layout_height="495dp"
-        android:layout_below="@+id/titulo_pedido_tv"
-        android:layout_centerHorizontal="true"
-
-        android:divider="#212121"
-        android:dividerHeight="1dp"
+        android:layout_centerInParent="true"
 
         android:gravity="center"
 
         android:isScrollContainer="true"
 
-        android:scrollbars="vertical"
-
-        android:stretchMode="columnWidth">
+        android:scrollbars="horizontal">
 
 
-    </ListView>
+    </TableLayout>
 
     <LinearLayout
         android:id="@+id/total_e_desconto_linear_layout"
@@ -43,8 +39,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_alignEnd="@id/itens_list_view"
-        android:layout_below="@id/itens_list_view"
+        android:layout_alignEnd="@id/itens_table_layout"
+        android:layout_below="@id/itens_table_layout"
 
         android:orientation="vertical">
 
@@ -86,15 +82,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:background="@drawable/transparent_bg"
+            android:layout_marginEnd="45dp"
+
+            android:background="#64B5F6"
 
             android:onClick="confirmCancelOrder"
 
-            android:paddingEnd="45dp"
-
             android:text="@string/cancel_pedido"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="27sp" />
 
         <Button
@@ -102,13 +98,14 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/transparent_bg"
+            android:layout_marginStart="45dp"
+
+            android:background="#64B5F6"
 
             android:onClick="confirmCancelOrder"
-
-            android:paddingEnd="45dp"
             android:text="@string/confirm_pedido"
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textSize="27sp" />
 
     </LinearLayout>

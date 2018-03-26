@@ -26,7 +26,7 @@
             android:text="@string/cha"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="17sp" />
+            android:textSize="27sp" />
 
 
         <TextView
@@ -42,7 +42,7 @@
             android:text="@string/agua"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="17sp" />
+            android:textSize="27sp" />
 
     </LinearLayout>
 
@@ -66,7 +66,7 @@
             android:text="@string/cafe"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="17sp" />
+            android:textSize="27sp" />
 
         <TextView
             android:id="@+id/tv_refri"
@@ -81,7 +81,7 @@
             android:text="@string/refri"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="17sp" />
+            android:textSize="27sp" />
 
     </LinearLayout>
 
@@ -108,7 +108,7 @@
             android:text="@string/suco"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="17sp" />
+            android:textSize="27sp" />
 
     </LinearLayout>
 

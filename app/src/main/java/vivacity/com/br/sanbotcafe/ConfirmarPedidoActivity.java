@@ -7,8 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
@@ -19,7 +23,8 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
     private static final String TAG = ConfirmarPedidoActivity.class.getSimpleName();
 
     private Pedido pedido;
-    private ListView itensListView;
+    private TableLayout itensTableLayout;
+
     private TextView tvConfirmarTotal;
     private SystemManager systemManager;
 
@@ -29,7 +34,8 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
         setContentView(R.layout.activity_confirmar_pedido);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
-        this.itensListView = (ListView) findViewById(R.id.itens_list_view);
+
+        this.itensTableLayout = (TableLayout) findViewById(R.id.itens_table_layout);
         this.tvConfirmarTotal = (TextView) findViewById(R.id.tv_confirmar_total);
 
         this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
@@ -44,23 +50,27 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
 
         if (this.pedido != null) {
 
-            String[] fromColums = {"_id", "nome", "preco"};
-            int[] toViews = {0, R.id.nome_item_tv, R.id.preco_item_tv};
-
-            MatrixCursor cursor = new MatrixCursor(fromColums);
-            MatrixCursor.RowBuilder rowBuilder;
+            TextView nomeItem = new TextView(getApplicationContext());
+            NumberPicker qtdItem = new NumberPicker(getApplicationContext());
+            qtdItem.setMaxValue(99);
+            qtdItem.setMinValue(1);
+            TextView precoItem = new TextView(getApplicationContext());
 
             for (ItensDePedido itensDePedido : this.pedido.getItensDePedidos()) {
-                rowBuilder = cursor.newRow();
-                rowBuilder.add(fromColums[1], itensDePedido.getNome());
-                rowBuilder.add(fromColums[2],
-                        (itensDePedido.getPrecoUnit() * itensDePedido.getQuantidade()));
+
+                nomeItem.setText(itensDePedido.getNome());
+                qtdItem.setValue(itensDePedido.getQuantidade());
+                precoItem.setText(String.valueOf(itensDePedido.getPrecoUnit() *
+                        itensDePedido.getQuantidade()));
+
+                TableRow row = new TableRow(getApplicationContext());
+                row.addView(nomeItem);
+                row.addView(qtdItem);
+                row.addView(precoItem);
+
+                this.itensTableLayout.addView(row);
+
             }
-
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
-                    R.layout.line_layout, cursor, fromColums, toViews, 0);
-
-            this.itensListView.setAdapter(adapter);
 
             this.pedido.calcularTotal();
             this.tvConfirmarTotal.setText("Total: R$" + this.pedido.getPrecoFinal());
