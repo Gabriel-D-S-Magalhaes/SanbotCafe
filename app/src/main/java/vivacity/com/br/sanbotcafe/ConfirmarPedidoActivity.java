@@ -1,18 +1,15 @@
 package vivacity.com.br.sanbotcafe;
 
 import android.content.Intent;
-import android.database.MatrixCursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ListView;
 import android.widget.NumberPicker;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
@@ -50,7 +47,7 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
 
         if (this.pedido != null) {
 
-            TextView nomeItem = new TextView(getApplicationContext());
+            TextView nomeItem = this.setUpTextView();
             NumberPicker qtdItem = new NumberPicker(getApplicationContext());
             qtdItem.setMaxValue(99);
             qtdItem.setMinValue(1);
@@ -75,6 +72,16 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
             this.pedido.calcularTotal();
             this.tvConfirmarTotal.setText("Total: R$" + this.pedido.getPrecoFinal());
         }
+    }
+
+    private TextView setUpTextView() {
+
+        TextView nomeItem = new TextView(getApplicationContext());
+        nomeItem.setTextSize(27);
+        nomeItem.setTextColor(Color.BLACK);
+        nomeItem.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+
+        return nomeItem;
     }
 
     @Override
