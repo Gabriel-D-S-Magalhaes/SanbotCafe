@@ -34,6 +34,7 @@
     <!--ConfirmarPedidoActivity-->
     <string name="confirm_pedido">Confirmar</string>
     <string name="cancel_pedido">Cancelar</string>
+    <string name="titulo_activity_confirmar_pedido">Pedido</string>
 
 
 </resources>

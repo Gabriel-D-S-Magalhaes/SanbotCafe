@@ -47,13 +47,11 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
 
         if (this.pedido != null) {
 
-            TextView nomeItem = this.setUpTextView();
-            NumberPicker qtdItem = new NumberPicker(getApplicationContext());
-            qtdItem.setMaxValue(99);
-            qtdItem.setMinValue(1);
-            TextView precoItem = new TextView(getApplicationContext());
-
             for (ItensDePedido itensDePedido : this.pedido.getItensDePedidos()) {
+
+                TextView nomeItem = this.setUpTextViewNomeItem();
+                NumberPicker qtdItem = this.setUpNumberPickerQuantidadeItens();
+                TextView precoItem = this.setUpTextViewPrecoItem();
 
                 nomeItem.setText(itensDePedido.getNome());
                 qtdItem.setValue(itensDePedido.getQuantidade());
@@ -74,7 +72,23 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
         }
     }
 
-    private TextView setUpTextView() {
+    private NumberPicker setUpNumberPickerQuantidadeItens() {
+        NumberPicker quantidadeItens = new NumberPicker(getApplicationContext());
+        quantidadeItens.setMaxValue(99);
+        quantidadeItens.setMinValue(1);
+        return quantidadeItens;
+    }
+
+    private TextView setUpTextViewPrecoItem() {
+        TextView precoItens = new TextView(getApplicationContext());
+        precoItens.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+        precoItens.setTextColor(Color.BLACK);
+        precoItens.setTextSize(27);
+
+        return precoItens;
+    }
+
+    private TextView setUpTextViewNomeItem() {
 
         TextView nomeItem = new TextView(getApplicationContext());
         nomeItem.setTextSize(27);
