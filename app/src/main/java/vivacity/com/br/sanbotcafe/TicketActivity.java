@@ -19,7 +19,15 @@ import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 public class TicketActivity extends TopBaseActivity {
+
+    final DecimalFormatSymbols DECIMAL_FORMAT_SYMBOLS = new DecimalFormatSymbols(
+            new Locale("pt", "BR"));
+    final DecimalFormat MOEDA_BR = new DecimalFormat("¤ ###,###,##0.00", DECIMAL_FORMAT_SYMBOLS);
 
     private TextView contador;
     private TableLayout tableLayout;
@@ -113,8 +121,9 @@ public class TicketActivity extends TopBaseActivity {
             precoItens.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
             precoItens.setTextColor(Color.BLACK);
             precoItens.setTextSize(27);
-            precoItens.setText(String.valueOf(this.pedido.getItensDePedidos().get(i - 1).getQuantidade()
-                    * this.pedido.getItensDePedidos().get(i - 1).getPrecoUnit()));
+            precoItens.setText(MOEDA_BR.format(
+                    this.pedido.getItensDePedidos().get(i - 1).getQuantidade()
+                            * this.pedido.getItensDePedidos().get(i - 1).getPrecoUnit()));
 
             // Add the TextView to TableRow created
             this.tableRow.addView(precoItens);
@@ -123,7 +132,9 @@ public class TicketActivity extends TopBaseActivity {
         }
 
         this.pedido.calcularTotal();
-        this.tvTotal.setText("Total: R$" + this.pedido.getPrecoFinal());
+        this.tvTotal.setText(String.format(getResources().getString(R.string.tv_total),
+                MOEDA_BR.format(this.pedido.getPrecoFinal())));
+
     }
 
     public void cancelOrder(View view) {

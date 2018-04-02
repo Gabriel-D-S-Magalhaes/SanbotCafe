@@ -2,7 +2,6 @@ package vivacity.com.br.sanbotcafe;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -18,9 +17,17 @@ import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 public class ConfirmarPedidoActivity extends TopBaseActivity implements NumberPicker.OnValueChangeListener {
 
     private static final String TAG = ConfirmarPedidoActivity.class.getSimpleName();
+
+    final DecimalFormatSymbols DECIMAL_FORMAT_SYMBOLS = new DecimalFormatSymbols(
+            new Locale("pt", "BR"));
+    final DecimalFormat MOEDA_BR = new DecimalFormat("¤ ###,###,##0.00", DECIMAL_FORMAT_SYMBOLS);
 
     private Pedido pedido;
     private TableLayout itensTableLayout;
@@ -50,39 +57,44 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements NumberPi
 
         if (this.pedido != null) {
 
-            int i = 0;
-
-            for (ItensDePedido itensDePedido : this.pedido.getItensDePedidos()) {
-
-                TextView nomeItem = this.setUpTextViewNomeItem();
-                NumberPicker qtdItem = this.setUpNumberPickerQuantidadeItens();
-                TextView precoItem = this.setUpTextViewPrecoItem();
-
-                nomeItem.setText(itensDePedido.getNome());
-                qtdItem.setValue(itensDePedido.getQuantidade());
-                precoItem.setText(String.valueOf(itensDePedido.getPrecoUnit() *
-                        itensDePedido.getQuantidade()));
-
-                TableRow row = new TableRow(getApplicationContext());
-                row.setGravity(Gravity.CENTER);
-                row.addView(nomeItem);
-                qtdItem.setId(i);
-                row.addView(qtdItem);
-                row.addView(precoItem);
-
-                this.itensTableLayout.addView(row);
-                i++;
-            }
+            this.popularTableLayout();
 
             this.pedido.calcularTotal();
-            this.tvConfirmarTotal.setText("Total: R$" + this.pedido.getPrecoFinal());
+            this.tvConfirmarTotal.setText(String.format(getResources().getString(R.string.tv_total),
+                    MOEDA_BR.format(this.pedido.getPrecoFinal())));
+        }
+    }
+
+    private void popularTableLayout() {
+        int i = 0;
+
+        for (ItensDePedido itensDePedido : this.pedido.getItensDePedidos()) {
+
+            TextView nomeItem = this.setUpTextViewNomeItem();
+            NumberPicker qtdItem = this.setUpNumberPickerQuantidadeItens();
+            TextView precoItem = this.setUpTextViewPrecoItem();
+
+            nomeItem.setText(itensDePedido.getNome());
+            qtdItem.setValue(itensDePedido.getQuantidade());
+            precoItem.setText(MOEDA_BR.format(
+                    itensDePedido.getPrecoUnit() * itensDePedido.getQuantidade()));
+
+            TableRow row = new TableRow(getApplicationContext());
+            row.setGravity(Gravity.CENTER);
+            row.addView(nomeItem);
+            qtdItem.setId(i);
+            row.addView(qtdItem);
+            row.addView(precoItem);
+
+            this.itensTableLayout.addView(row);
+            i++;
         }
     }
 
     private NumberPicker setUpNumberPickerQuantidadeItens() {
         NumberPicker quantidadeItens = new NumberPicker(getApplicationContext());
         quantidadeItens.setMaxValue(99);
-        quantidadeItens.setMinValue(1);
+        quantidadeItens.setMinValue(0);
         quantidadeItens.setBackgroundColor(Color.GRAY);
         quantidadeItens.setOnValueChangedListener(this);
         return quantidadeItens;
@@ -117,7 +129,8 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements NumberPi
         switch (view.getId()) {
 
             case R.id.btn_cancel:
-
+                Toast.makeText(getApplicationContext(), "Pedido será cancelado",
+                        Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.btn_confirm:
@@ -138,6 +151,18 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements NumberPi
     @Override
     public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
-        this.pedido.getItensDePedidos().get(picker.getId()).setQuantidade(newVal);
+        this.pedido.getItensDePedidos().get(picker.getId()).setQuantidade(newVal);// Muda a quantidade do item em questão
+        this.pedido.calcularTotal();// Calcula o total
+        this.tvConfirmarTotal.setText(String.format(getResources().getString(R.string.tv_total),
+                MOEDA_BR.format(this.pedido.getPrecoFinal())));// Mostra o total atualizado
+
+        TableRow row = (TableRow) this.itensTableLayout.getChildAt(picker.getId());// Linha do NumberPicker clicado
+        TextView precoDoItem = (TextView) row.getVirtualChildAt(2);// Terceira View da linha do NumberPicker em questão
+
+        /* Pegando o preço e quantidade do item cujo picker refere-se */
+        double precoUnitItem = this.pedido.getItensDePedidos().get(picker.getId()).getPrecoUnit();
+        double quantidadeItens = this.pedido.getItensDePedidos().get(picker.getId()).getQuantidade();
+
+        precoDoItem.setText(MOEDA_BR.format(precoUnitItem * quantidadeItens));// Atualiza o TextView
     }
 }

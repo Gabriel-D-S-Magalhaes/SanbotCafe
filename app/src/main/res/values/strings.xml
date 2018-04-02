@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Sanbot Cafe</string>
     <string name="tv_desconto">Discount $00,00</string>
-    <string name="tv_total">Total $00,00</string>
+    <string name="tv_total">Total: %s</string>
     <string name="btn_start">Start</string>
     <string name="bebidas_alcoolicas">Alcohol</string>
     <string name="bebidas_sem_alcool">Alcohol-free</string>
