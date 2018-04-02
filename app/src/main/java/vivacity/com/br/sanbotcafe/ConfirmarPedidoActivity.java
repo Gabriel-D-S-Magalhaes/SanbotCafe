@@ -3,6 +3,7 @@ package vivacity.com.br.sanbotcafe;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
