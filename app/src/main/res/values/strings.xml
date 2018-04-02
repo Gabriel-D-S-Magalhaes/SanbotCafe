@@ -1,5 +1,24 @@
 <resources>
     <string name="app_name">Sanbot Cafe</string>
-    <string name="tv_desconto">Desconto R$00,00</string>
-    <string name="tv_total">Total R$00,00</string>
+    <string name="tv_desconto">Discount $00,00</string>
+    <string name="tv_total">Total $00,00</string>
+    <string name="btn_start">Start</string>
+    <string name="bebidas_alcoolicas">Alcohol</string>
+    <string name="bebidas_sem_alcool">Alcohol-free</string>
+    <string name="alert_18">You must be 18 years old or older to purchase and drink alcohol under age people will not be served, must show proof of age at the bar.</string>
+    <string name="maior_18">Yes, I am</string>
+    <string name="menor_18">No, I am not</string>
+    <string name="cha">Black Tea $2,80</string>
+    <string name="cafe">Coffee $3,50</string>
+    <string name="suco">Juice $3,50</string>
+    <string name="refri">Coke $2,50</string>
+    <string name="agua">Water $2,00</string>
+    <string name="tv_quantidade">Quantity:</string>
+    <string name="btn_proximo">Next >></string>
+    <string name="confirm_pedido">Confirm</string>
+    <string name="cancel_pedido">Cancel</string>
+    <string name="titulo_activity_confirmar_pedido">Order</string>
+    <string name="tv_algo_mais">Anything else?</string>
+    <string name="vinho">Wine $3,50</string>
+    <string name="cerveja">Beer $4,00</string>
 </resources>
