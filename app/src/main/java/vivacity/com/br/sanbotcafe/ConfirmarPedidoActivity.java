@@ -2,20 +2,23 @@ package vivacity.com.br.sanbotcafe;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.NumberPicker;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
-public class ConfirmarPedidoActivity extends TopBaseActivity {
+public class ConfirmarPedidoActivity extends TopBaseActivity implements NumberPicker.OnValueChangeListener {
 
     private static final String TAG = ConfirmarPedidoActivity.class.getSimpleName();
 
@@ -47,6 +50,8 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
 
         if (this.pedido != null) {
 
+            int i = 0;
+
             for (ItensDePedido itensDePedido : this.pedido.getItensDePedidos()) {
 
                 TextView nomeItem = this.setUpTextViewNomeItem();
@@ -59,12 +64,14 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
                         itensDePedido.getQuantidade()));
 
                 TableRow row = new TableRow(getApplicationContext());
+                row.setGravity(Gravity.CENTER);
                 row.addView(nomeItem);
+                qtdItem.setId(i);
                 row.addView(qtdItem);
                 row.addView(precoItem);
 
                 this.itensTableLayout.addView(row);
-
+                i++;
             }
 
             this.pedido.calcularTotal();
@@ -76,6 +83,8 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
         NumberPicker quantidadeItens = new NumberPicker(getApplicationContext());
         quantidadeItens.setMaxValue(99);
         quantidadeItens.setMinValue(1);
+        quantidadeItens.setBackgroundColor(Color.GRAY);
+        quantidadeItens.setOnValueChangedListener(this);
         return quantidadeItens;
     }
 
@@ -117,5 +126,18 @@ public class ConfirmarPedidoActivity extends TopBaseActivity {
                 startActivity(fecharPedido);
                 break;
         }
+    }
+
+    /**
+     * Called upon a change of the current value.
+     *
+     * @param picker The NumberPicker associated with this listener.
+     * @param oldVal The previous value.
+     * @param newVal The new value.
+     */
+    @Override
+    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+
+        this.pedido.getItensDePedidos().get(picker.getId()).setQuantidade(newVal);
     }
 }
