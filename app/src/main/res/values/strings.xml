@@ -21,4 +21,10 @@
     <string name="tv_algo_mais">Anything else?</string>
     <string name="vinho">Wine $3,50</string>
     <string name="cerveja">Beer $4,00</string>
+
+    <!--CancelarPedidoDialogFragment-->
+    <string name="cancel_pedido_dialog_fragment_title">Cancel order?</string>
+    <string name="cancel_pedido_dialog_fragment_message">Are you sure you want to cancel it?</string>
+    <string name="cancel_pedido_dialog_fragment_continue">I want to continue</string>
+    <string name="cancel_pedido_dialog_fragment_cancel">I want to cancel</string>
 </resources>

@@ -1,5 +1,7 @@
 package vivacity.com.br.sanbotcafe;
 
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,7 +24,8 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
-public class ConfirmarPedidoActivity extends TopBaseActivity implements NumberPicker.OnValueChangeListener {
+public class ConfirmarPedidoActivity extends TopBaseActivity implements
+        NumberPicker.OnValueChangeListener, CancelarPedidoDialogFragment.CancelarPedidoListener {
 
     private static final String TAG = ConfirmarPedidoActivity.class.getSimpleName();
 
@@ -130,8 +133,9 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements NumberPi
         switch (view.getId()) {
 
             case R.id.btn_cancel:
-                Toast.makeText(getApplicationContext(), "Pedido será cancelado",
-                        Toast.LENGTH_SHORT).show();
+                // Constrói um DialogFragment
+                DialogFragment dialogFragment = new CancelarPedidoDialogFragment();
+                dialogFragment.show(getFragmentManager(), "Cancelar Pedido?");// Mostra o fragment
                 break;
 
             case R.id.btn_confirm:
@@ -165,5 +169,17 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements NumberPi
         double quantidadeItens = this.pedido.getItensDePedidos().get(picker.getId()).getQuantidade();
 
         precoDoItem.setText(MOEDA_BR.format(precoUnitItem * quantidadeItens));// Atualiza o TextView
+    }
+
+    @Override
+    public void onDialogCancelOrder(DialogInterface dialog, int which) {
+        // Cancela o pedido e vai para a MainActivity
+        this.pedido.fecharPedido();
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+    }
+
+    @Override
+    public void onDialogContinueOrder(DialogInterface dialog, int which) {
+        // Não faz nada
     }
 }

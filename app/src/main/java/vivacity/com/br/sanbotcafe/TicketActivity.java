@@ -1,5 +1,7 @@
 package vivacity.com.br.sanbotcafe;
 
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -23,7 +25,8 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
-public class TicketActivity extends TopBaseActivity {
+public class TicketActivity extends TopBaseActivity implements
+        CancelarPedidoDialogFragment.CancelarPedidoListener {
 
     final DecimalFormatSymbols DECIMAL_FORMAT_SYMBOLS = new DecimalFormatSymbols(
             new Locale("pt", "BR"));
@@ -143,8 +146,22 @@ public class TicketActivity extends TopBaseActivity {
 
             case R.id.btn_novo_pedido:
 
-                Toast.makeText(getApplicationContext(), "Novo pedido", Toast.LENGTH_SHORT).show();
+                // Constrói um DialogFragment
+                DialogFragment dialogFragment = new CancelarPedidoDialogFragment();
+                dialogFragment.show(getFragmentManager(), "Cancelar Pedido?");// Mostra o fragment
                 break;
         }
+    }
+
+    @Override
+    public void onDialogCancelOrder(DialogInterface dialog, int which) {
+        // Cancela o pedido e vai para a MainActivity
+        this.pedido.fecharPedido();
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+    }
+
+    @Override
+    public void onDialogContinueOrder(DialogInterface dialog, int which) {
+        // Não faz nada. Só esperar o contador terminar
     }
 }
