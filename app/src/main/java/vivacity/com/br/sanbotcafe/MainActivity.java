@@ -1,24 +1,19 @@
 package vivacity.com.br.sanbotcafe;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.qihancloud.opensdk.base.BindBaseInterface;
 import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
-import com.qihancloud.opensdk.beans.OperationResult;
-import com.qihancloud.opensdk.custom.Battery;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
 public class MainActivity extends TopBaseActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    SystemManager systemManager;
+
+    private SystemManager systemManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +23,6 @@ public class MainActivity extends TopBaseActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
 
         this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
-
     }
 
     @Override
@@ -39,7 +33,7 @@ public class MainActivity extends TopBaseActivity {
     protected void onStart() {
         super.onStart();
 
-        this.systemManager.switchFloatBar(false, getClass().getName());// Verificar se funciona esse código no onStart das outraas activity
+        this.systemManager.switchFloatBar(false, this.getClass().getName());
     }
 
     /**
@@ -51,9 +45,6 @@ public class MainActivity extends TopBaseActivity {
 
         // Escolha o id da View e case alguma view então faça alguma coisa
         switch (view.getId()) {
-
-            case R.id.btn_exit:
-                break;
 
             case R.id.btn_start:
 
@@ -74,5 +65,10 @@ public class MainActivity extends TopBaseActivity {
                 this.finishAffinity();
                 break;
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }
