@@ -27,4 +27,9 @@
     <string name="cancel_pedido_dialog_fragment_message">Are you sure you want to cancel it?</string>
     <string name="cancel_pedido_dialog_fragment_continue">I want to continue</string>
     <string name="cancel_pedido_dialog_fragment_cancel">I want to cancel</string>
+
+    <string name="tts_not_initialized">Text to Speech not initialized</string>
+    <string name="no_text">No text to be synthesized</string>
+    <string name="text_limit">Text is larger than the allowed limit</string>
+    <string name="lang_unavailable">Language pt-BR unavailable</string>
 </resources>

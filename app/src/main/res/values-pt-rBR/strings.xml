@@ -44,5 +44,10 @@
     <string name="cancel_pedido_dialog_fragment_continue">Eu quero continuar</string>
     <string name="cancel_pedido_dialog_fragment_cancel">Eu quero cancelar</string>
 
+    <string name="tts_not_initialized">Texto para fala não inicializado</string>
+    <string name="no_text">Nenhum texto para ser sintetizado</string>
+    <string name="text_limit">Texto é maior que o limite permitido</string>
+    <string name="lang_unavailable">Idioma pt-BR indisponível</string>
+
 
 </resources>
