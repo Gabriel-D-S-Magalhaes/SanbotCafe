@@ -44,6 +44,7 @@ public class TicketActivity extends TopBaseActivity implements
     private Pedido pedido;
     private SystemManager systemManager;
     private MyTextToSpeech myTextToSpeech;
+    private CountDownTimer countDownTimer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,13 +81,14 @@ public class TicketActivity extends TopBaseActivity implements
 
             // Esse blobo será iniciado se o usuário da MainActivity3 voltar para cá com o botão
             // VOLTAR. Será que funciona com o FloatButton do Sanbot???
-            this.myTextToSpeech.speak("Essas são nossas opções de bebidas alcoólicas.");
+            this.myTextToSpeech.speak("Pedido finalizado, mas você ainda tem 30 segundos para " +
+                    "cancelar.");
             //this.myTextToSpeech.getTextToSpeech().speak(getString(R.string.you_are_in_main_activity_2), TextToSpeech.QUEUE_FLUSH, null);
         }
 
         this.printOrder();
 
-        new CountDownTimer(31000, 1000) {
+        this.countDownTimer = new CountDownTimer(31000, 1000) {
             /**
              * Callback fired on regular interval.
              *
@@ -103,7 +105,7 @@ public class TicketActivity extends TopBaseActivity implements
             @Override
             public void onFinish() {
                 QuantidadeActivity.fecharPedido();
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(TicketActivity.this, MainActivity.class));
             }
         }.start();
     }
@@ -186,7 +188,8 @@ public class TicketActivity extends TopBaseActivity implements
     public void onDialogCancelOrder(DialogInterface dialog, int which) {
         // Cancela o pedido e vai para a MainActivity
         this.pedido.fecharPedido();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        this.countDownTimer.cancel();
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
@@ -208,12 +211,12 @@ public class TicketActivity extends TopBaseActivity implements
 
                         this.myTextToSpeech = new MyTextToSpeech(TicketActivity.this,
                                 "Pedido finalizado, mas você ainda tem 30 segundos para " +
-                                        "cancela-lo.");
+                                        "cancelar.");
                     } else {
 
                         // TALVEZ esse trecho nunca será executado;
                         this.myTextToSpeech.speak("Pedido finalizado, mas você ainda tem 30 " +
-                                "segundos para cancela-lo.");
+                                "segundos para cancelar.");
                     }
                 }
 
