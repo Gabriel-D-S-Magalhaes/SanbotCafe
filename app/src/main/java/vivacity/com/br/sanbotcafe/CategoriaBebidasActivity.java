@@ -85,6 +85,9 @@ public class CategoriaBebidasActivity extends TopBaseActivity implements MyTextT
         }
 
         startActivity(escolherBebidas);
+        Log.e(TAG, "Method finish() will invoke.");
+        finish();
+        Log.e(TAG, "Method finish() was invoked.");
     }
 
     @Override
@@ -178,10 +181,6 @@ public class CategoriaBebidasActivity extends TopBaseActivity implements MyTextT
                     break;
             }
         }
-
-        Log.e(TAG, "Method finish() will invoke.");
-        finish();
-        Log.e(TAG, "Method finish() was invoked.");
     }
 
     @Override

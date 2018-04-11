@@ -86,6 +86,9 @@ public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpee
         }
 
         startActivity(escolha);
+        Log.e(TAG, "Method finish() will invoke.");
+        finish();
+        Log.e(TAG, "Method finish() was invoked.");
     }
 
     @Override
@@ -181,10 +184,6 @@ public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpee
                     break;
             }
         }
-
-        Log.e(TAG, "Method finish() will invoke.");
-        finish();
-        Log.e(TAG, "Method finish() was invoked.");
     }
 
     @Override

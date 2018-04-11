@@ -170,6 +170,9 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
 
                 Intent fecharPedido = new Intent(getApplicationContext(), TicketActivity.class);
                 startActivity(fecharPedido);
+                Log.e(TAG, "Method finish() will invoke.");
+                finish();
+                Log.e(TAG, "Method finish() was invoked.");
                 break;
         }
     }

@@ -90,6 +90,9 @@ public class BebidasAlcoolicasActivity extends TopBaseActivity implements MyText
         }
 
         startActivity(quantificar);
+        Log.e(TAG, "Method finish() will invoke.");
+        finish();
+        Log.e(TAG, "Method finish() was invoked.");
     }
 
     @Override
@@ -183,10 +186,6 @@ public class BebidasAlcoolicasActivity extends TopBaseActivity implements MyText
                     break;
             }
         }
-
-        Log.e(TAG, "Method finish() will invoke.");
-        finish();
-        Log.e(TAG, "Method finish() was invoked.");
     }
 
     @Override

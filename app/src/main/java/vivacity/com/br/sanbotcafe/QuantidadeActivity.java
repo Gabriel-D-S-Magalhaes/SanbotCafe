@@ -186,6 +186,9 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
     public void onDialogPositiveClick(int dialog) {
 
         startActivity(confirmarPedido);// Inicia a próxima activity
+        Log.e(TAG, "Method finish() will invoke.");
+        QuantidadeActivity.this.finish();
+        Log.e(TAG, "Method finish() was invoked.");
     }
 
     /**

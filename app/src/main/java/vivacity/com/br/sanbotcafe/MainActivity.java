@@ -81,6 +81,9 @@ public class MainActivity extends TopBaseActivity implements MyTextToSpeech.Done
                 Intent comecarPedido = new Intent(getApplicationContext(),
                         CategoriaBebidasActivity.class);
                 startActivity(comecarPedido);
+                Log.e(TAG, "Method finish() will invoke.");
+                finish();
+                Log.e(TAG, "Method finish() was invoked.");
 
                 break;
         }
@@ -161,10 +164,6 @@ public class MainActivity extends TopBaseActivity implements MyTextToSpeech.Done
                     break;
             }
         }
-
-        Log.e(TAG, "Method finish() will invoke.");
-        finish();
-        Log.e(TAG, "Method finish() was invoked.");
     }
 
     @Override

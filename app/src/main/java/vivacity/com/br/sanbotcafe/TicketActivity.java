@@ -193,6 +193,9 @@ public class TicketActivity extends TopBaseActivity implements
         this.pedido.fecharPedido();
         this.countDownTimer.cancel();
         startActivity(new Intent(this, MainActivity.class));
+        Log.e(TAG, "Method finish() will invoke.");
+        TicketActivity.this.finish();
+        Log.e(TAG, "Method finish() was invoked.");
     }
 
     @Override
