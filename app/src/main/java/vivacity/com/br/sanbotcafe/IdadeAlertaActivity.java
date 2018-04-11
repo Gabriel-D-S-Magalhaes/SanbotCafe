@@ -14,7 +14,10 @@ import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
-public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpeech.DoneListener {
+import java.util.ArrayList;
+
+public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpeech.DoneListener,
+        MySpeechToText.ResultsListener {
 
     private final String TAG = IdadeAlertaActivity.class.getSimpleName();
     private final int REQUEST_CODE_CHECK_TTS = 1;
@@ -141,6 +144,15 @@ public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpee
 
             Log.e(TAG, e.getMessage());
         }
+    }
+
+    @Override
+    public void results(ArrayList<String> resultados) {
+        for (String resultado : resultados) {
+            Log.i(TAG, resultado);
+        }
+
+        Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
     }
 
     @Override

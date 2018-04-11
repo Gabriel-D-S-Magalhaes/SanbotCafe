@@ -24,10 +24,12 @@ import com.qihancloud.opensdk.function.unit.SystemManager;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class TicketActivity extends TopBaseActivity implements
-        CancelarPedidoDialogFragment.CancelarPedidoListener, MyTextToSpeech.DoneListener {
+        CancelarPedidoDialogFragment.CancelarPedidoListener, MyTextToSpeech.DoneListener,
+        MySpeechToText.ResultsListener {
 
     private final int REQUEST_CODE_CHECK_TTS = 1;
     private final String TAG = TicketActivity.class.getSimpleName();
@@ -254,6 +256,15 @@ public class TicketActivity extends TopBaseActivity implements
 
             Log.e(TAG, e.getMessage());
         }
+    }
+
+    @Override
+    public void results(ArrayList<String> resultados) {
+        for (String resultado : resultados) {
+            Log.i(TAG, resultado);
+        }
+
+        Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
     }
 
     @Override

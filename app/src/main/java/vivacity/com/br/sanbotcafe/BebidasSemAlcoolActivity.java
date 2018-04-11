@@ -13,7 +13,10 @@ import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
-public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextToSpeech.DoneListener {
+import java.util.ArrayList;
+
+public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextToSpeech.DoneListener,
+        MySpeechToText.ResultsListener {
 
 
     private final String TAG = BebidasSemAlcoolActivity.class.getSimpleName();
@@ -162,6 +165,15 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextT
 
             Log.e(TAG, e.getMessage());
         }
+    }
+
+    @Override
+    public void results(ArrayList<String> resultados) {
+        for (String resultado : resultados) {
+            Log.i(TAG, resultado);
+        }
+
+        Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
     }
 
     @Override
