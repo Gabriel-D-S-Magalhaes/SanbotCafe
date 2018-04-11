@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.NumberPicker;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
@@ -28,11 +26,12 @@ import java.util.Locale;
 public class ConfirmarPedidoActivity extends TopBaseActivity implements
         NumberPicker.OnValueChangeListener, CancelarPedidoDialogFragment.CancelarPedidoListener {
 
-    private static final String TAG = ConfirmarPedidoActivity.class.getSimpleName();
+    private final String TAG = ConfirmarPedidoActivity.class.getSimpleName();
 
-    final DecimalFormatSymbols DECIMAL_FORMAT_SYMBOLS = new DecimalFormatSymbols(
-            new Locale("pt", "BR"));
-    final DecimalFormat MOEDA_BR = new DecimalFormat("¤ ###,###,##0.00", DECIMAL_FORMAT_SYMBOLS);
+    private final Locale PT_BR = new Locale("pt", "BR");
+    private final DecimalFormatSymbols DECIMAL_FORMAT_SYMBOLS = new DecimalFormatSymbols(PT_BR);
+    private final DecimalFormat MOEDA_BR = new DecimalFormat("¤ ###,###,##0.00",
+            DECIMAL_FORMAT_SYMBOLS);
 
     private Pedido pedido;
     private TableLayout itensTableLayout;

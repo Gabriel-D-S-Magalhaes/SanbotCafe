@@ -4,20 +4,17 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.CountDownTimer;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
@@ -32,9 +29,10 @@ public class TicketActivity extends TopBaseActivity implements
 
     private final int REQUEST_CODE_CHECK_TTS = 1;
     private final String TAG = TicketActivity.class.getSimpleName();
-    final DecimalFormatSymbols DECIMAL_FORMAT_SYMBOLS = new DecimalFormatSymbols(
-            new Locale("pt", "BR"));
-    final DecimalFormat MOEDA_BR = new DecimalFormat("¤ ###,###,##0.00",
+
+    private final Locale PT_BR = new Locale("pt", "BR");
+    private final DecimalFormatSymbols DECIMAL_FORMAT_SYMBOLS = new DecimalFormatSymbols(PT_BR);
+    private final DecimalFormat MOEDA_BR = new DecimalFormat("¤ ###,###,##0.00",
             DECIMAL_FORMAT_SYMBOLS);
 
     private TextView contador;

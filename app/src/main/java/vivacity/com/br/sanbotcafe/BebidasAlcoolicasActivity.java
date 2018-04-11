@@ -14,7 +14,7 @@ import com.qihancloud.opensdk.function.unit.SystemManager;
 
 public class BebidasAlcoolicasActivity extends TopBaseActivity {
 
-    public final String TAG = BebidasAlcoolicasActivity.class.getSimpleName();
+    private final String TAG = BebidasAlcoolicasActivity.class.getSimpleName();
     public static final String EXTRA_ESCOLHIDA = BebidasAlcoolicasActivity.class.getPackage()
             .getName().concat(".EXTRA_ESCOLHIDA");
     private final int REQUEST_CODE_CHECK_TTS = 1;

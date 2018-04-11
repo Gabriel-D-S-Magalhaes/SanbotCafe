@@ -19,7 +19,7 @@ import com.qihancloud.opensdk.function.unit.SystemManager;
 public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoDialogFragment
         .FecharPedidoListener {
 
-    private static final String TAG = QuantidadeActivity.class.getSimpleName();
+    private final String TAG = QuantidadeActivity.class.getSimpleName();
     private final int REQUEST_CODE_CHECK_TTS = 1;
 
     private static Pedido pedido;
