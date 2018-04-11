@@ -1,7 +1,9 @@
 package vivacity.com.br.sanbotcafe;
 
 import android.app.DialogFragment;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +19,7 @@ import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
 public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoDialogFragment
-        .FecharPedidoListener {
+        .FecharPedidoListener, MyTextToSpeech.DoneListener {
 
     private final String TAG = QuantidadeActivity.class.getSimpleName();
     private final int REQUEST_CODE_CHECK_TTS = 1;
@@ -46,6 +48,7 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
 
     private SystemManager systemManager;
     private MyTextToSpeech myTextToSpeech;
+    private MySpeechToText mySpeechToText;
 
     public static Pedido getPedido() {
         return pedido;
@@ -205,7 +208,7 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
 
                     if (this.myTextToSpeech == null) {
 
-                        this.myTextToSpeech = new MyTextToSpeech(QuantidadeActivity.this,
+                        this.myTextToSpeech = new MyTextToSpeech(this, this,
                                 "Escolha a quantidade de itens.");
                     } else {
 
@@ -215,6 +218,37 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
                 }
 
                 break;
+        }
+    }
+
+    @Override
+    public void onDone(boolean done) {
+        final Intent recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "pt-BR");// PT-BR
+        //recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");// English US
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS,
+                5000);
+
+        try {
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // Should be on the main thread
+                    mySpeechToText = new MySpeechToText(QuantidadeActivity.this,
+                            QuantidadeActivity.this);
+                    mySpeechToText.startListening(recognizerIntent);
+                }
+            });
+
+        } catch (ActivityNotFoundException e) {
+
+            Log.e(TAG, e.getMessage());
         }
     }
 

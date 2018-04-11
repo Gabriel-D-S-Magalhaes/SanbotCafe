@@ -1,10 +1,12 @@
 package vivacity.com.br.sanbotcafe;
 
 import android.app.DialogFragment;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Gravity;
@@ -24,7 +26,8 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 public class ConfirmarPedidoActivity extends TopBaseActivity implements
-        NumberPicker.OnValueChangeListener, CancelarPedidoDialogFragment.CancelarPedidoListener {
+        NumberPicker.OnValueChangeListener, CancelarPedidoDialogFragment.CancelarPedidoListener,
+        MyTextToSpeech.DoneListener {
 
     private final String TAG = ConfirmarPedidoActivity.class.getSimpleName();
 
@@ -40,6 +43,7 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
     private SystemManager systemManager;
     private MyTextToSpeech myTextToSpeech;
     private final int REQUEST_CODE_CHECK_TTS = 1;
+    private MySpeechToText mySpeechToText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -218,7 +222,7 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
 
                     if (this.myTextToSpeech == null) {
 
-                        this.myTextToSpeech = new MyTextToSpeech(ConfirmarPedidoActivity.this,
+                        this.myTextToSpeech = new MyTextToSpeech(this, this,
                                 "Confirme seu pedido.");
                     } else {
 
@@ -228,6 +232,37 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
                 }
 
                 break;
+        }
+    }
+
+    @Override
+    public void onDone(boolean done) {
+        final Intent recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "pt-BR");// PT-BR
+        //recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");// English US
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS,
+                5000);
+
+        try {
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // Should be on the main thread
+                    mySpeechToText = new MySpeechToText(ConfirmarPedidoActivity.this,
+                            ConfirmarPedidoActivity.this);
+                    mySpeechToText.startListening(recognizerIntent);
+                }
+            });
+
+        } catch (ActivityNotFoundException e) {
+
+            Log.e(TAG, e.getMessage());
         }
     }
 

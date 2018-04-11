@@ -1,6 +1,8 @@
 package vivacity.com.br.sanbotcafe;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,12 +14,13 @@ import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
-public class IdadeAlertaActivity extends TopBaseActivity {
+public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpeech.DoneListener {
 
     private final String TAG = IdadeAlertaActivity.class.getSimpleName();
     private final int REQUEST_CODE_CHECK_TTS = 1;
     private SystemManager systemManager;
     private MyTextToSpeech myTextToSpeech;
+    private MySpeechToText mySpeechToText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,7 +97,7 @@ public class IdadeAlertaActivity extends TopBaseActivity {
 
                     if (this.myTextToSpeech == null) {
 
-                        this.myTextToSpeech = new MyTextToSpeech(IdadeAlertaActivity.this,
+                        this.myTextToSpeech = new MyTextToSpeech(this, this,
                                 "É proibida a venda de bebidas alcoólicas para menores de 18 " +
                                         "anos!");
                     } else {
@@ -106,6 +109,37 @@ public class IdadeAlertaActivity extends TopBaseActivity {
                 }
 
                 break;
+        }
+    }
+
+    @Override
+    public void onDone(boolean done) {
+        final Intent recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "pt-BR");// PT-BR
+        //recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");// English US
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS,
+                5000);
+
+        try {
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // Should be on the main thread
+                    mySpeechToText = new MySpeechToText(IdadeAlertaActivity.this,
+                            IdadeAlertaActivity.this);
+                    mySpeechToText.startListening(recognizerIntent);
+                }
+            });
+
+        } catch (ActivityNotFoundException e) {
+
+            Log.e(TAG, e.getMessage());
         }
     }
 

@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class MySpeechToText implements RecognitionListener {
 
-    private final String TAG = MyTextToSpeech.class.getSimpleName();
+    private final String TAG = MySpeechToText.class.getSimpleName();
 
     private Activity activity;
     private Context context;

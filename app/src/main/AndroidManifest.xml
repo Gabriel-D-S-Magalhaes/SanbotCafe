@@ -3,6 +3,7 @@
     package="vivacity.com.br.sanbotcafe">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <meta-data
+            android:name="CONFIG_RECORD"
+            android:value="true" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +30,7 @@
         <activity android:name=".QuantidadeActivity" />
         <activity android:name=".ConfirmarPedidoActivity" />
         <activity android:name=".TicketActivity" />
-        <activity android:name=".IdadeAlertaActivity"></activity>
+        <activity android:name=".IdadeAlertaActivity" />
     </application>
 
 </manifest>

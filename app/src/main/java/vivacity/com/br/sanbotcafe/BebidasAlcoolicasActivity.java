@@ -1,6 +1,8 @@
 package vivacity.com.br.sanbotcafe;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +14,7 @@ import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
-public class BebidasAlcoolicasActivity extends TopBaseActivity {
+public class BebidasAlcoolicasActivity extends TopBaseActivity implements MyTextToSpeech.DoneListener {
 
     private final String TAG = BebidasAlcoolicasActivity.class.getSimpleName();
     public static final String EXTRA_ESCOLHIDA = BebidasAlcoolicasActivity.class.getPackage()
@@ -20,6 +22,7 @@ public class BebidasAlcoolicasActivity extends TopBaseActivity {
     private final int REQUEST_CODE_CHECK_TTS = 1;
     private SystemManager systemManager;
     private MyTextToSpeech myTextToSpeech;
+    private MySpeechToText mySpeechToText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -98,7 +101,7 @@ public class BebidasAlcoolicasActivity extends TopBaseActivity {
 
                     if (this.myTextToSpeech == null) {
 
-                        this.myTextToSpeech = new MyTextToSpeech(BebidasAlcoolicasActivity.this,
+                        this.myTextToSpeech = new MyTextToSpeech(this, this,
                                 "Essas são nossas opções de bebidas alcoólicas.");
                     } else {
 
@@ -108,6 +111,37 @@ public class BebidasAlcoolicasActivity extends TopBaseActivity {
                 }
 
                 break;
+        }
+    }
+
+    @Override
+    public void onDone(boolean done) {
+        final Intent recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "pt-BR");// PT-BR
+        //recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");// English US
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS,
+                5000);
+
+        try {
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // Should be on the main thread
+                    mySpeechToText = new MySpeechToText(BebidasAlcoolicasActivity.this,
+                            BebidasAlcoolicasActivity.this);
+                    mySpeechToText.startListening(recognizerIntent);
+                }
+            });
+
+        } catch (ActivityNotFoundException e) {
+
+            Log.e(TAG, e.getMessage());
         }
     }
 

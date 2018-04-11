@@ -1,7 +1,9 @@
 package vivacity.com.br.sanbotcafe;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +13,7 @@ import com.qihancloud.opensdk.base.TopBaseActivity;
 import com.qihancloud.opensdk.beans.FuncConstant;
 import com.qihancloud.opensdk.function.unit.SystemManager;
 
-public class BebidasSemAlcoolActivity extends TopBaseActivity {
+public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextToSpeech.DoneListener {
 
 
     private final String TAG = BebidasSemAlcoolActivity.class.getSimpleName();
@@ -23,6 +25,7 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity {
 
     private SystemManager systemManager;
     private MyTextToSpeech myTextToSpeech;
+    private MySpeechToText mySpeechToText;
 
 
     @Override
@@ -117,7 +120,7 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity {
 
                     if (this.myTextToSpeech == null) {
 
-                        this.myTextToSpeech = new MyTextToSpeech(BebidasSemAlcoolActivity.this,
+                        this.myTextToSpeech = new MyTextToSpeech(this, this,
                                 "Essas são nossas opções de bebidas sem álcool.");
                     } else {
 
@@ -127,6 +130,37 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity {
                 }
 
                 break;
+        }
+    }
+
+    @Override
+    public void onDone(boolean done) {
+        final Intent recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "pt-BR");// PT-BR
+        //recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");// English US
+
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS,
+                5000);
+
+        try {
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // Should be on the main thread
+                    mySpeechToText = new MySpeechToText(BebidasSemAlcoolActivity.this,
+                            BebidasSemAlcoolActivity.this);
+                    mySpeechToText.startListening(recognizerIntent);
+                }
+            });
+
+        } catch (ActivityNotFoundException e) {
+
+            Log.e(TAG, e.getMessage());
         }
     }
 
