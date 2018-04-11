@@ -153,6 +153,37 @@ public class CategoriaBebidasActivity extends TopBaseActivity implements MyTextT
         }
 
         Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
+        checkSpeech(resultados);
+    }
+
+    /**
+     * Verify if the speech spoke is acceptable
+     */
+    private void checkSpeech(ArrayList<String> words) {
+
+        for (String word : words) {
+
+            if (word.equals("bebidas sem álcool")) {
+
+                // do not worked
+                startActivity(new Intent(CategoriaBebidasActivity.this,
+                        BebidasSemAlcoolActivity.class));
+                finish();
+
+            } else if (word.equals("bebidas alcoólicas")) {
+
+
+                // do not worked
+                startActivity(new Intent(CategoriaBebidasActivity.this,
+                        BebidasAlcoolicasActivity.class));
+                finish();
+            }
+        }
+
+
+        // do not worked
+        this.myTextToSpeech.speak("Desculpa, mas não entendi. Toque na tela para escolher qual " +
+                "o tipo de bebida que deseja.");
     }
 
     @Override

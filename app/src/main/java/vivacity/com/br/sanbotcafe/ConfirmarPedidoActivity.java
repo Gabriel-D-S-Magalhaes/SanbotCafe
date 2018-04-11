@@ -277,6 +277,13 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
         }
 
         Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
+        checkSpeech(resultados);
+    }
+
+    private void checkSpeech(ArrayList<String> resultados) {
+        for (String resultado : resultados) {
+            // do something
+        }
     }
 
     @Override
