@@ -320,6 +320,7 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
         super.onDestroy();
         Log.i(TAG, "onDestroy invoked.");
 
+        if (this.mySpeechToText != null) this.mySpeechToText.destroy();
         this.myTextToSpeech.destroyTextToSpeech();
     }
 }

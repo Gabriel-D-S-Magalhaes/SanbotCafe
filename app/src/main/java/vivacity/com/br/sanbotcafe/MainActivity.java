@@ -23,7 +23,6 @@ public class MainActivity extends TopBaseActivity implements MyTextToSpeech.Done
     private SystemManager systemManager;
     private MyTextToSpeech myTextToSpeech;
     private final int REQUEST_CODE_CHECK_TTS = 1;
-    private MySpeechToText mySpeechToText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -125,33 +124,6 @@ public class MainActivity extends TopBaseActivity implements MyTextToSpeech.Done
 
     @Override
     public void onDone(boolean done) {
-        final Intent recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-
-        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-
-        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "pt-BR");// PT-BR
-        //recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");// English US
-
-        recognizerIntent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS,
-                5000);
-
-        try {
-
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    // Should be on the main thread
-                    mySpeechToText = new MySpeechToText(MainActivity.this,
-                            MainActivity.this);
-                    mySpeechToText.startListening(recognizerIntent);
-                }
-            });
-
-        } catch (ActivityNotFoundException e) {
-
-            Log.e(TAG, e.getMessage());
-        }
     }
 
     @Override

@@ -219,6 +219,7 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextT
         super.onDestroy();
         Log.i(TAG, "onDestroy invoked.");
 
+        if (this.mySpeechToText != null) this.mySpeechToText.destroy();
         this.myTextToSpeech.destroyTextToSpeech();
     }
 }

@@ -306,6 +306,7 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
         super.onDestroy();
         Log.i(TAG, "onDestroy invoked.");
 
+        if (this.mySpeechToText != null) this.mySpeechToText.destroy();
         this.myTextToSpeech.destroyTextToSpeech();
     }
 }

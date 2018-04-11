@@ -198,6 +198,7 @@ public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpee
         super.onDestroy();
         Log.i(TAG, "onDestroy invoked.");
 
+        if (this.mySpeechToText != null) this.mySpeechToText.destroy();
         this.myTextToSpeech.destroyTextToSpeech();
     }
 }
