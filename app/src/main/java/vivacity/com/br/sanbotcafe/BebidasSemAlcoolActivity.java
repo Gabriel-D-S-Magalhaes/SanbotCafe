@@ -116,7 +116,7 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextT
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
 
@@ -177,13 +177,57 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextT
         }
 
         Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
-        checkSpeech(resultados);
+        this.checkSpeech(resultados);
     }
 
     private void checkSpeech(ArrayList<String> resultados) {
+
+        final Intent quantificar = new Intent(BebidasSemAlcoolActivity.this.getApplicationContext(),
+                QuantidadeActivity.class);
+
         for (String resultado : resultados) {
-            // do something
+
+            switch (resultado) {
+
+                case "chá":
+
+                    quantificar.putExtra(EXTRA_ESCOLHIDA, "Chá");
+                    this.startActivity(quantificar);
+                    this.finish();
+                    return;
+
+                case "café":
+
+                    quantificar.putExtra(EXTRA_ESCOLHIDA, "Café");
+                    this.startActivity(quantificar);
+                    this.finish();
+                    return;
+
+                case "sucos":
+
+                    quantificar.putExtra(EXTRA_ESCOLHIDA, "Suco");
+                    this.startActivity(quantificar);
+                    this.finish();
+                    return;
+
+                case "água":
+
+                    quantificar.putExtra(EXTRA_ESCOLHIDA, "Água");
+                    this.startActivity(quantificar);
+                    this.finish();
+                    return;
+
+                case "refrigerante":
+
+                    quantificar.putExtra(EXTRA_ESCOLHIDA, "Refrigerante");
+                    this.startActivity(quantificar);
+                    this.finish();
+                    return;
+            }
         }
+
+        this.myTextToSpeech.speak("Desculpa, mas não entendi. Escolha uma das opções tocando" +
+                " na tela.");
     }
 
     @Override

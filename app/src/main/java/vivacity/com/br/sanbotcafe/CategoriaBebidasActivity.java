@@ -92,7 +92,7 @@ public class CategoriaBebidasActivity extends TopBaseActivity implements MyTextT
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
 
@@ -153,35 +153,33 @@ public class CategoriaBebidasActivity extends TopBaseActivity implements MyTextT
         }
 
         Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
-        checkSpeech(resultados);
+        this.checkSpeech(resultados);
     }
 
     /**
      * Verify if the speech spoke is acceptable
      */
-    private void checkSpeech(ArrayList<String> words) {
+    private void checkSpeech(ArrayList<String> resultados) {
 
-        for (String word : words) {
+        for (String resultado : resultados) {
 
-            if (word.equals("bebidas sem álcool")) {
+            switch (resultado) {
 
-                // do not worked
-                startActivity(new Intent(CategoriaBebidasActivity.this,
-                        BebidasSemAlcoolActivity.class));
-                finish();
+                case "bebidas sem álcool":
 
-            } else if (word.equals("bebidas alcoólicas")) {
+                    this.startActivity(new Intent(CategoriaBebidasActivity.this.getApplicationContext(),
+                            BebidasSemAlcoolActivity.class));
+                    this.finish();
+                    return;
 
-
-                // do not worked
-                startActivity(new Intent(CategoriaBebidasActivity.this,
-                        BebidasAlcoolicasActivity.class));
-                finish();
+                case "bebidas alcoólicas":
+                    this.startActivity(new Intent(CategoriaBebidasActivity.this.getApplicationContext(),
+                            IdadeAlertaActivity.class));
+                    this.finish();
+                    return;
             }
         }
 
-
-        // do not worked
         this.myTextToSpeech.speak("Desculpa, mas não entendi. Toque na tela para escolher qual " +
                 "o tipo de bebida que deseja.");
     }

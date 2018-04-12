@@ -1,9 +1,8 @@
 package vivacity.com.br.sanbotcafe;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +14,7 @@ import com.qihancloud.opensdk.function.unit.SystemManager;
 
 import java.util.ArrayList;
 
-public class MainActivity extends TopBaseActivity implements MyTextToSpeech.DoneListener,
-        MySpeechToText.ResultsListener {
+public class MainActivity extends TopBaseActivity implements MyTextToSpeech.DoneListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -80,6 +78,7 @@ public class MainActivity extends TopBaseActivity implements MyTextToSpeech.Done
 
                 Intent comecarPedido = new Intent(getApplicationContext(),
                         CategoriaBebidasActivity.class);
+
                 startActivity(comecarPedido);
                 Log.e(TAG, "Method finish() will invoke.");
                 finish();
@@ -102,7 +101,7 @@ public class MainActivity extends TopBaseActivity implements MyTextToSpeech.Done
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
 
@@ -127,15 +126,6 @@ public class MainActivity extends TopBaseActivity implements MyTextToSpeech.Done
 
     @Override
     public void onDone(boolean done) {
-    }
-
-    @Override
-    public void results(ArrayList<String> resultados) {
-        for (String resultado : resultados) {
-            Log.i(TAG, resultado);
-        }
-
-        Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
     }
 
     @Override

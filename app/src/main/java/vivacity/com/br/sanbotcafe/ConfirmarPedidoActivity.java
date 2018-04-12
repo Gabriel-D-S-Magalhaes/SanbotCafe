@@ -216,7 +216,7 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
 
@@ -277,13 +277,34 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
         }
 
         Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
-        checkSpeech(resultados);
+        this.checkSpeech(resultados);
     }
 
     private void checkSpeech(ArrayList<String> resultados) {
         for (String resultado : resultados) {
-            // do something
+
+            switch (resultado) {
+
+                case "cancelar":
+
+                    final DialogFragment dialogFragment = new CancelarPedidoDialogFragment();
+                    dialogFragment.show(ConfirmarPedidoActivity.this.getFragmentManager(),
+                            "Cancelar Pedido?");
+                    return;
+
+                case "confirmar":
+
+                    final Intent fecharPedido = new Intent(
+                            ConfirmarPedidoActivity.this.getApplicationContext(),
+                            TicketActivity.class);
+                    this.startActivity(fecharPedido);
+                    this.finish();
+                    return;
+            }
         }
+
+        this.myTextToSpeech.speak("Desculpa, mas não entendi. Escolha uma das opções tocando" +
+                " na tela.");
     }
 
     @Override

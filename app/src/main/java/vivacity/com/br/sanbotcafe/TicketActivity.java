@@ -108,7 +108,7 @@ public class TicketActivity extends TopBaseActivity implements
             @Override
             public void onFinish() {
                 QuantidadeActivity.fecharPedido();
-                startActivity(new Intent(TicketActivity.this, MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         }.start();
     }
@@ -192,7 +192,7 @@ public class TicketActivity extends TopBaseActivity implements
         // Cancela o pedido e vai para a MainActivity
         this.pedido.fecharPedido();
         this.countDownTimer.cancel();
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
         Log.e(TAG, "Method finish() will invoke.");
         TicketActivity.this.finish();
         Log.e(TAG, "Method finish() was invoked.");
@@ -205,7 +205,7 @@ public class TicketActivity extends TopBaseActivity implements
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
 
@@ -268,13 +268,32 @@ public class TicketActivity extends TopBaseActivity implements
         }
 
         Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
-        checkSpeech(resultados);
+        this.checkSpeech(resultados);
     }
 
     private void checkSpeech(ArrayList<String> resultados) {
         for (String resultado : resultados) {
-            // do something
+
+            switch (resultado) {
+
+                case "cancelar":
+
+                    final DialogFragment dialogFragment = new CancelarPedidoDialogFragment();
+                    dialogFragment.show(TicketActivity.this.getFragmentManager(),
+                            "Cancelar Pedido?");
+                    return;
+
+                case "confirmar":
+                case "continuar":
+
+                    // do something
+
+                    return;
+            }
         }
+
+        this.myTextToSpeech.speak("Desculpe, mas não entendi. Aguarde até seu pedido ser " +
+                "finalizado, ou toque no botão localizado no canto inferior esquerdo para cancelar.");
     }
 
     @Override

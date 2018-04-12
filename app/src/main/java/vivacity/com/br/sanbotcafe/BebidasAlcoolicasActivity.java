@@ -97,7 +97,7 @@ public class BebidasAlcoolicasActivity extends TopBaseActivity implements MyText
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
 
@@ -158,13 +158,36 @@ public class BebidasAlcoolicasActivity extends TopBaseActivity implements MyText
         }
 
         Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
-        checkSpeech(resultados);
+        this.checkSpeech(resultados);
     }
 
     private void checkSpeech(ArrayList<String> resultados) {
+
+        final Intent quantificar = new Intent(BebidasAlcoolicasActivity.this.getApplicationContext(),
+                QuantidadeActivity.class);
+
         for (String resultado : resultados) {
-            // do something
+
+            switch (resultado) {
+
+                case "vinho":
+
+                    quantificar.putExtra(EXTRA_ESCOLHIDA, "Vinho");
+                    this.startActivity(quantificar);
+                    this.finish();
+                    return;
+
+                case "cerveja":
+
+                    quantificar.putExtra(EXTRA_ESCOLHIDA, "Cerveja");
+                    this.startActivity(quantificar);
+                    this.finish();
+                    return;
+            }
         }
+
+        this.myTextToSpeech.speak("Desculpa, mas não entendi. Escolha uma das opções tocando" +
+                " na tela.");
     }
 
     @Override

@@ -93,7 +93,7 @@ public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpee
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
 
@@ -156,13 +156,32 @@ public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpee
         }
 
         Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
-        checkSpeech(resultados);
+        this.checkSpeech(resultados);
     }
 
     private void checkSpeech(ArrayList<String> resultados) {
         for (String resultado : resultados) {
-            // do something
+
+            switch (resultado) {
+
+                case "tenho 18 anos ou mais":
+
+                    this.startActivity(new Intent(IdadeAlertaActivity.this.getApplicationContext(),
+                            BebidasAlcoolicasActivity.class));
+                    this.finish();
+                    return;
+
+                case "não tenho 18 anos":
+
+                    this.startActivity(new Intent(IdadeAlertaActivity.this.getApplicationContext(),
+                            BebidasSemAlcoolActivity.class));
+                    this.finish();
+                    return;
+            }
         }
+
+        this.myTextToSpeech.speak("Desculpa, mas não entendi. Escolha um dos botões que estão" +
+                " na tela.");
     }
 
     @Override

@@ -30,9 +30,9 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
 
     private Intent confirmarPedido;
 
-    private LinearLayout linearLayout;// Linear layout que agrupa os botões 1, 2, 3, 4 ou 5 quantidade
+    private LinearLayout linearLayout;// Linear layout que agrupa os botões 1, 2, 3, 4 ou 5 quantidades
     private TextView textView;// Texto será modificado de "Quantidade:" para "Algo mais?"
-    private Button btnNext;// Começa invisible, mas após escolhida a qtd. fica visible
+    private Button btnNext;// Começa invisible, mas, após escolhida a qtd. fica "visible"
 
     private String bebida;// Armazena a bebida escolhida na tela anterior
 
@@ -203,7 +203,7 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
 
@@ -264,13 +264,53 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
         }
 
         Log.i(TAG, "Resultado mais confiável: ".concat(resultados.get(0)));
-        checkSpeech(resultados);
+        this.checkSpeech(resultados);
     }
 
     private void checkSpeech(ArrayList<String> resultados) {
         for (String resultado : resultados) {
-            // do something
+
+            switch (resultado) {
+
+                case "um":
+                case "1":
+
+                    QuantidadeActivity.this.quantidadeEscolhida(
+                            findViewById(R.id.btn_uma_quantidade));
+                    return;
+
+                case "dois":
+                case "2":
+
+                    QuantidadeActivity.this.quantidadeEscolhida(
+                            findViewById(R.id.btn_duas_quantidades));
+                    return;
+
+                case "três":
+                case "3":
+
+                    QuantidadeActivity.this.quantidadeEscolhida(
+                            findViewById(R.id.btn_tres_quantidades));
+                    return;
+
+                case "quatro":
+                case "4":
+
+                    QuantidadeActivity.this.quantidadeEscolhida(
+                            findViewById(R.id.btn_quatro_quantidades));
+                    return;
+
+                case "cinco":
+                case "5":
+
+                    QuantidadeActivity.this.quantidadeEscolhida(
+                            findViewById(R.id.btn_cinco_quantidades));
+                    return;
+            }
         }
+
+        this.myTextToSpeech.speak("Desculpa, mas não entendi. Escolha uma das opções tocando" +
+                " na tela.");
     }
 
     @Override
