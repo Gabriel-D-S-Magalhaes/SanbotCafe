@@ -24,7 +24,7 @@
             <TextView
                 android:paddingEnd="45dp"
 
-                android:text="Itens"
+                android:text="@string/tv_itens_column"
                 android:textAlignment="viewStart"
                 android:textColor="#000000"
                 android:textSize="27sp" />
@@ -32,13 +32,13 @@
             <TextView
                 android:paddingEnd="45dp"
 
-                android:text="Qtd."
+                android:text="@string/tv_qtd_itens"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="27sp" />
 
             <TextView
-                android:text="Preço"
+                android:text="@string/tv_preco"
                 android:textAlignment="viewEnd"
                 android:textColor="#000000"
                 android:textSize="27sp" />
@@ -55,7 +55,7 @@
         android:layout_below="@id/pedido_tbl"
         android:layout_marginTop="45dp"
 
-        android:text="Total R$00,00"
+        android:text="@string/tv_total_final"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="27sp" />

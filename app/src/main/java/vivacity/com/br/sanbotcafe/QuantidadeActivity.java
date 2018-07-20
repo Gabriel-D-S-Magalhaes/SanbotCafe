@@ -14,9 +14,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.qihancloud.opensdk.base.TopBaseActivity;
-import com.qihancloud.opensdk.beans.FuncConstant;
-import com.qihancloud.opensdk.function.unit.SystemManager;
+import com.sanbot.opensdk.base.TopBaseActivity;
+import com.sanbot.opensdk.beans.FuncConstant;
+import com.sanbot.opensdk.function.unit.SystemManager;
 
 import java.util.ArrayList;
 
@@ -62,15 +62,16 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        register(QuantidadeActivity.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quantidade);
         Log.i(TAG, "onCreate invoked.");
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
 
-        this.linearLayout = (LinearLayout) findViewById(R.id.escolha_quantidade_liner_layout);
-        this.textView = (TextView) findViewById(R.id.tv_quantidade);
-        this.btnNext = (Button) findViewById(R.id.btn_next);
+        this.linearLayout = findViewById(R.id.escolha_quantidade_liner_layout);
+        this.textView = findViewById(R.id.tv_quantidade);
+        this.btnNext = findViewById(R.id.btn_next);
 
         this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
     }

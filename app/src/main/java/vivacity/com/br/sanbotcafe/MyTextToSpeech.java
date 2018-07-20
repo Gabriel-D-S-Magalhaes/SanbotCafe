@@ -33,11 +33,11 @@ public class MyTextToSpeech extends UtteranceProgressListener implements TextToS
         return this.textToSpeech;
     }
 
-    public Context getContext() {
+    private Context getContext() {
         return this.context;
     }
 
-    public Activity getActivity() {
+    private Activity getActivity() {
         return this.activity;
     }
 
@@ -45,7 +45,7 @@ public class MyTextToSpeech extends UtteranceProgressListener implements TextToS
         return this.text;
     }
 
-    public MyTextToSpeech(@NonNull Activity activity, @NonNull Context context, @NonNull String text) {
+    MyTextToSpeech(@NonNull Activity activity, @NonNull Context context, @NonNull String text) {
 
         this.activity = activity;
         this.context = context;
@@ -75,7 +75,7 @@ public class MyTextToSpeech extends UtteranceProgressListener implements TextToS
 
                         Log.i(TAG, "Text length = " + this.getText().length());
 
-                        final HashMap<String, String> params = new HashMap<String, String>();
+                        final HashMap<String, String> params = new HashMap<>();
                         params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "TTS_UTTERANCE_ID");
                         int i = this.textToSpeech.speak(this.getText(), TextToSpeech.QUEUE_FLUSH,
                                 params);

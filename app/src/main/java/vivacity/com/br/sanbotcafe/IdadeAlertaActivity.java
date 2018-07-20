@@ -4,15 +4,14 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.qihancloud.opensdk.base.TopBaseActivity;
-import com.qihancloud.opensdk.beans.FuncConstant;
-import com.qihancloud.opensdk.function.unit.SystemManager;
+import com.sanbot.opensdk.base.TopBaseActivity;
+import com.sanbot.opensdk.beans.FuncConstant;
+import com.sanbot.opensdk.function.unit.SystemManager;
 
 import java.util.ArrayList;
 
@@ -27,6 +26,7 @@ public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpee
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        register(IdadeAlertaActivity.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idade_alerta);
         Log.i(TAG, "onCreate invoked.");

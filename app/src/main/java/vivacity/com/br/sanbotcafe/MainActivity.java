@@ -1,18 +1,17 @@
 package vivacity.com.br.sanbotcafe;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.qihancloud.opensdk.base.TopBaseActivity;
-import com.qihancloud.opensdk.beans.FuncConstant;
-import com.qihancloud.opensdk.function.unit.SystemManager;
 
-import java.util.ArrayList;
+import com.sanbot.opensdk.base.TopBaseActivity;
+import com.sanbot.opensdk.beans.FuncConstant;
+import com.sanbot.opensdk.function.unit.SystemManager;
+
 
 public class MainActivity extends TopBaseActivity implements MyTextToSpeech.DoneListener {
 
@@ -24,6 +23,7 @@ public class MainActivity extends TopBaseActivity implements MyTextToSpeech.Done
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        register(MainActivity.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.i(TAG, "onCreate invoked.");

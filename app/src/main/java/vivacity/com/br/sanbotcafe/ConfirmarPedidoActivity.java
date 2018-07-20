@@ -17,9 +17,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.qihancloud.opensdk.base.TopBaseActivity;
-import com.qihancloud.opensdk.beans.FuncConstant;
-import com.qihancloud.opensdk.function.unit.SystemManager;
+import com.sanbot.opensdk.base.TopBaseActivity;
+import com.sanbot.opensdk.beans.FuncConstant;
+import com.sanbot.opensdk.function.unit.SystemManager;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -48,14 +48,15 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        register(ConfirmarPedidoActivity.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmar_pedido);
         Log.i(TAG, "onCreate invoked");
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
 
-        this.itensTableLayout = (TableLayout) findViewById(R.id.itens_table_layout);
-        this.tvConfirmarTotal = (TextView) findViewById(R.id.tv_confirmar_total);
+        this.itensTableLayout = findViewById(R.id.itens_table_layout);
+        this.tvConfirmarTotal = findViewById(R.id.tv_confirmar_total);
 
         this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
     }

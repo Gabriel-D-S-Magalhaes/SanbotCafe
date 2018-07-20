@@ -9,7 +9,6 @@
     <string name="bebidas_alcoolicas">Bebidas alcoólicas</string>
     <string name="bebidas_sem_alcool">Bebidas Sem Álcool</string>
 
-
     <!--IdadeAlertaActivity-->
     <string name="alert_18">Você deve ter 18 anos de idade ou mais para comprar bebida(s) alcoólica(s).</string>
     <string name="maior_18">Tenho 18 anos ou mais</string>
@@ -35,7 +34,7 @@
     <string name="confirm_pedido">Confirmar</string>
     <string name="cancel_pedido">Cancelar</string>
     <string name="titulo_activity_confirmar_pedido">Pedido</string>
-    <string name="tv_desconto">Desconto R$00,00</string>
+    <string name="tv_desconto">Desconto %s</string>
     <string name="tv_total">Total: %s</string>
 
     <!--CancelarPedidoDialogFragment-->
@@ -49,5 +48,14 @@
     <string name="text_limit">Texto é maior que o limite permitido</string>
     <string name="lang_unavailable">Idioma pt-BR indisponível</string>
 
+    <string name="btn_qtd_1">1</string>
+    <string name="btn_qtd_2">2</string>
+    <string name="btn_qtd_3">3</string>
+    <string name="btn_qtd_4">4</string>
+    <string name="btn_qtd_5">5</string>
 
+    <string name="tv_itens_column">Itens</string>
+    <string name="tv_qtd_itens">Qtd.</string>
+    <string name="tv_preco">Preço</string>
+    <string name="tv_total_final">Total %s</string>
 </resources>

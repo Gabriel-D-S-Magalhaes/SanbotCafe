@@ -10,9 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.qihancloud.opensdk.base.TopBaseActivity;
-import com.qihancloud.opensdk.beans.FuncConstant;
-import com.qihancloud.opensdk.function.unit.SystemManager;
+import com.sanbot.opensdk.base.TopBaseActivity;
+import com.sanbot.opensdk.beans.FuncConstant;
+import com.sanbot.opensdk.function.unit.SystemManager;
 
 import java.util.ArrayList;
 
@@ -29,6 +29,7 @@ public class BebidasAlcoolicasActivity extends TopBaseActivity implements MyText
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        register(BebidasAlcoolicasActivity.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bebidas_alcoolicas);
         Log.i(TAG, "onCreate invoked.");

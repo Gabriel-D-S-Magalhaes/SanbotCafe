@@ -49,7 +49,7 @@
 
             android:onClick="quantidadeEscolhida"
 
-            android:text="1"
+            android:text="@string/btn_qtd_1"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="27sp" />
@@ -64,7 +64,7 @@
 
             android:onClick="quantidadeEscolhida"
 
-            android:text="2"
+            android:text="@string/btn_qtd_2"
 
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -82,7 +82,7 @@
 
             android:onClick="quantidadeEscolhida"
 
-            android:text="3"
+            android:text="@string/btn_qtd_3"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="27sp" />
@@ -99,7 +99,7 @@
 
             android:onClick="quantidadeEscolhida"
 
-            android:text="4"
+            android:text="@string/btn_qtd_4"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="27sp" />
@@ -114,7 +114,7 @@
 
             android:onClick="quantidadeEscolhida"
 
-            android:text="5"
+            android:text="@string/btn_qtd_5"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="27sp" />

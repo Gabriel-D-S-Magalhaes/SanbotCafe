@@ -18,9 +18,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.qihancloud.opensdk.base.TopBaseActivity;
-import com.qihancloud.opensdk.beans.FuncConstant;
-import com.qihancloud.opensdk.function.unit.SystemManager;
+import com.sanbot.opensdk.base.TopBaseActivity;
+import com.sanbot.opensdk.beans.FuncConstant;
+import com.sanbot.opensdk.function.unit.SystemManager;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -51,15 +51,16 @@ public class TicketActivity extends TopBaseActivity implements
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        register(TicketActivity.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket);
         Log.i(TAG, "onCreate invoked.");
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// Keep screen ON
 
-        this.contador = (TextView) findViewById(R.id.tv_contador);
-        this.tableLayout = (TableLayout) findViewById(R.id.pedido_tbl);
-        this.tvTotal = (TextView) findViewById(R.id.tv_total);
+        this.contador = findViewById(R.id.tv_contador);
+        this.tableLayout = findViewById(R.id.pedido_tbl);
+        this.tvTotal = findViewById(R.id.tv_total);
 
         this.systemManager = (SystemManager) getUnitManager(FuncConstant.SYSTEM_MANAGER);
     }
