@@ -172,6 +172,7 @@ public class BebidasAlcoolicasActivity extends TopBaseActivity implements MyText
             switch (resultado) {
 
                 case "vinho":
+                case "Vinho":
 
                     quantificar.putExtra(EXTRA_ESCOLHIDA, "Vinho");
                     this.startActivity(quantificar);
@@ -179,6 +180,7 @@ public class BebidasAlcoolicasActivity extends TopBaseActivity implements MyText
                     return;
 
                 case "cerveja":
+                case "Cerveja":
 
                     quantificar.putExtra(EXTRA_ESCOLHIDA, "Cerveja");
                     this.startActivity(quantificar);

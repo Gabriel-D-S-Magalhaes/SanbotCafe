@@ -22,6 +22,6 @@
 
 # Applications which integrates Sanbot SDK, CANNOT obfuscate methods relate to Sanbot SDK during
 # packaging obfuscation. The way to obfuscate is:
--keep class com.qihancloud.opensdk.** {*;}
+-keep class com.sanbotcloud.opensdk.** {*;}
 # Please make sure classes of this SDK cannot be obfuscated. Otherwise application may lose control
 # of robot while operating.

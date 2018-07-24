@@ -274,6 +274,9 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
             switch (resultado) {
 
                 case "um":
+                case "Um":
+                case "Uma":
+                case "uma":
                 case "1":
 
                     QuantidadeActivity.this.quantidadeEscolhida(
@@ -281,6 +284,9 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
                     return;
 
                 case "dois":
+                case "Dois":
+                case "duas":
+                case "Duas":
                 case "2":
 
                     QuantidadeActivity.this.quantidadeEscolhida(
@@ -288,6 +294,7 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
                     return;
 
                 case "três":
+                case "Três":
                 case "3":
 
                     QuantidadeActivity.this.quantidadeEscolhida(
@@ -295,6 +302,7 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
                     return;
 
                 case "quatro":
+                case "Quatro":
                 case "4":
 
                     QuantidadeActivity.this.quantidadeEscolhida(
@@ -302,6 +310,7 @@ public class QuantidadeActivity extends TopBaseActivity implements FecharPedidoD
                     return;
 
                 case "cinco":
+                case "Cinco":
                 case "5":
 
                     QuantidadeActivity.this.quantidadeEscolhida(

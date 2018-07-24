@@ -116,7 +116,7 @@ public class CategoriaBebidasActivity extends TopBaseActivity implements MyTextT
     }
 
     @Override
-    public void onDone(boolean done) {
+    public void onDone(boolean done)   {
         final Intent recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
@@ -165,6 +165,7 @@ public class CategoriaBebidasActivity extends TopBaseActivity implements MyTextT
             switch (resultado) {
 
                 case "bebidas sem álcool":
+                case "sem álcool":
 
                     this.startActivity(new Intent(CategoriaBebidasActivity.this.getApplicationContext(),
                             BebidasSemAlcoolActivity.class));
@@ -172,6 +173,7 @@ public class CategoriaBebidasActivity extends TopBaseActivity implements MyTextT
                     return;
 
                 case "bebidas alcoólicas":
+                case "alcoólicas":
                     this.startActivity(new Intent(CategoriaBebidasActivity.this.getApplicationContext(),
                             IdadeAlertaActivity.class));
                     this.finish();

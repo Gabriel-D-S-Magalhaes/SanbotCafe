@@ -164,14 +164,22 @@ public class IdadeAlertaActivity extends TopBaseActivity implements MyTextToSpee
 
             switch (resultado) {
 
+                case "tenho 18":
                 case "tenho 18 anos ou mais":
+                case "tenho 18 anos":
+                case "tenho mais de 18 anos":
+                case "sou maior de idade":
+
 
                     this.startActivity(new Intent(IdadeAlertaActivity.this.getApplicationContext(),
                             BebidasAlcoolicasActivity.class));
                     this.finish();
                     return;
 
+                case "não tenho 18":
                 case "não tenho 18 anos":
+                case "tenho menos de 18 anos":
+                case "sou menor de idade":
 
                     this.startActivity(new Intent(IdadeAlertaActivity.this.getApplicationContext(),
                             BebidasSemAlcoolActivity.class));

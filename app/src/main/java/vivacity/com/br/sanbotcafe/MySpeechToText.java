@@ -26,7 +26,7 @@ public class MySpeechToText implements RecognitionListener {
     private boolean recognitionAvaiable = false;
     private ArrayList<String> resultados;
 
-    public MySpeechToText(@NonNull Activity activity, @NonNull Context context) {
+    MySpeechToText(@NonNull Activity activity, @NonNull Context context) {
 
         // Checks whether a speech recognition service is available on the system.
         // If this method returns false, createSpeechRecognizer(Context) will fail.
@@ -39,7 +39,7 @@ public class MySpeechToText implements RecognitionListener {
         }
     }
 
-    public Activity getActivity() {
+    private Activity getActivity() {
         return this.activity;
     }
 

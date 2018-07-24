@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sanbot.opensdk.base.TopBaseActivity;
 import com.sanbot.opensdk.beans.FuncConstant;
@@ -129,11 +130,11 @@ public class TicketActivity extends TopBaseActivity implements
 
         for (int i = 1; i <= this.pedido.getItensDePedidos().size(); i++) {
 
-            this.tableRow = new TableRow(getApplicationContext());// New TableRow
+            this.tableRow = new TableRow(this);// New TableRow
             this.tableRow.setGravity(Gravity.CENTER);// Setup gravity to center
             this.tableRow.setOrientation(LinearLayout.HORIZONTAL);// Setup orientation
 
-            TextView nomeItem = new TextView(getApplicationContext());// Instance a new TextView
+            TextView nomeItem = new TextView(this);// Instance a new TextView
             /*Setup the TextView*/
             nomeItem.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
             nomeItem.setTextColor(Color.BLACK);
@@ -149,7 +150,7 @@ public class TicketActivity extends TopBaseActivity implements
             quantidadeItem.setTextColor(Color.BLACK);
             quantidadeItem.setTextSize(27);
             quantidadeItem.setText(String.valueOf(this.pedido.getItensDePedidos().get(i - 1).getQuantidade()));
-            quantidadeItem.setPaddingRelative(0, 0, 45, 0);
+            quantidadeItem.setPaddingRelative(0, 0, 0, 0);
 
             this.tableRow.addView(quantidadeItem);// Add the TextView to TableRow created
 
@@ -158,9 +159,10 @@ public class TicketActivity extends TopBaseActivity implements
             precoItens.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
             precoItens.setTextColor(Color.BLACK);
             precoItens.setTextSize(27);
-            precoItens.setText(MOEDA_BR.format(
+            precoItens.setText(this.MOEDA_BR.format(
                     this.pedido.getItensDePedidos().get(i - 1).getQuantidade()
                             * this.pedido.getItensDePedidos().get(i - 1).getPrecoUnit()));
+            precoItens.setPaddingRelative(45, 0, 0, 0);
 
             // Add the TextView to TableRow created
             this.tableRow.addView(precoItens);
@@ -274,21 +276,36 @@ public class TicketActivity extends TopBaseActivity implements
 
     private void checkSpeech(ArrayList<String> resultados) {
         for (String resultado : resultados) {
-
             switch (resultado) {
-
                 case "cancelar":
-
+                case "Cancelar":
+                case "Quero cancelar":
+                case "quero cancelar":
+                case "Desejo cancelar":
+                case "desejo cancelar":
+                case "Cancele":
+                case "cancele":
+                case "Não continue":
+                case "não continue":
                     final DialogFragment dialogFragment = new CancelarPedidoDialogFragment();
                     dialogFragment.show(TicketActivity.this.getFragmentManager(),
                             "Cancelar Pedido?");
                     return;
 
                 case "confirmar":
+                case "Confirmar":
+                case "Tudo certo":
+                case "tudo certo":
+                case "Continuar":
                 case "continuar":
-
+                case "Pode continuar":
+                case "pode continuar":
+                case "Prossiga":
+                case "prossiga":
+                case "Continue":
+                case "continue":
                     // do something
-
+                    Toast.makeText(this, "Enviando pedido...", Toast.LENGTH_LONG).show();
                     return;
             }
         }
@@ -340,7 +357,9 @@ public class TicketActivity extends TopBaseActivity implements
         super.onDestroy();
         Log.i(TAG, "onDestroy invoked.");
 
-        if (this.mySpeechToText != null) this.mySpeechToText.destroy();
-        this.myTextToSpeech.destroyTextToSpeech();
+        if (this.mySpeechToText != null)
+            this.mySpeechToText.destroy();
+        if (this.myTextToSpeech != null)
+            this.myTextToSpeech.destroyTextToSpeech();
     }
 }

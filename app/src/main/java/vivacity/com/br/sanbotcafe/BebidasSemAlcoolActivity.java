@@ -191,6 +191,7 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextT
             switch (resultado) {
 
                 case "chá":
+                case "Chá":
 
                     quantificar.putExtra(EXTRA_ESCOLHIDA, "Chá");
                     this.startActivity(quantificar);
@@ -198,6 +199,7 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextT
                     return;
 
                 case "café":
+                case "Café":
 
                     quantificar.putExtra(EXTRA_ESCOLHIDA, "Café");
                     this.startActivity(quantificar);
@@ -205,6 +207,9 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextT
                     return;
 
                 case "sucos":
+                case "Sucos":
+                case "Suco":
+                case "suco":
 
                     quantificar.putExtra(EXTRA_ESCOLHIDA, "Suco");
                     this.startActivity(quantificar);
@@ -212,6 +217,7 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextT
                     return;
 
                 case "água":
+                case "Água":
 
                     quantificar.putExtra(EXTRA_ESCOLHIDA, "Água");
                     this.startActivity(quantificar);
@@ -219,6 +225,7 @@ public class BebidasSemAlcoolActivity extends TopBaseActivity implements MyTextT
                     return;
 
                 case "refrigerante":
+                case "Refrigerante":
 
                     quantificar.putExtra(EXTRA_ESCOLHIDA, "Refrigerante");
                     this.startActivity(quantificar);

@@ -6,12 +6,10 @@
 
     <TextView
         android:id="@+id/titulo_pedido_tv"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/itens_scroll_view"
         android:layout_centerHorizontal="true"
-
         android:text="@string/titulo_activity_confirmar_pedido"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -19,32 +17,25 @@
 
     <ScrollView
         android:id="@+id/itens_scroll_view"
-
         android:layout_width="1100dp"
         android:layout_height="495dp"
-
         android:layout_centerInParent="true">
 
 
         <TableLayout
             android:id="@+id/itens_table_layout"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:gravity="center" />
 
     </ScrollView>
 
     <LinearLayout
         android:id="@+id/total_e_desconto_linear_layout"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_alignEnd="@id/itens_scroll_view"
         android:layout_below="@id/itens_scroll_view"
-
         android:orientation="vertical">
 
         <!--TextView
@@ -60,22 +51,19 @@
 
         <TextView
             android:id="@+id/tv_confirmar_total"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="@string/tv_total"
             android:textAlignment="viewStart"
             android:textColor="#000000"
-            android:textSize="27sp" />
+            android:textSize="27sp"
+            android:textStyle="normal" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/btns_confirmar_cancelar"
-
         style="?android:attr/buttonBarStyle"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/total_e_desconto_linear_layout"
@@ -83,19 +71,12 @@
 
         <Button
             android:id="@+id/btn_cancel"
-
             style="?android:attr/buttonBarButtonStyle"
-
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
-
             android:layout_marginEnd="45dp"
-
             android:background="#64B5F6"
-
             android:onClick="confirmCancelOrder"
-
             android:text="@string/cancel_pedido"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -103,15 +84,11 @@
 
         <Button
             android:id="@+id/btn_confirm"
-
             style="?android:attr/buttonBarButtonStyle"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
-
             android:background="#64B5F6"
-
             android:onClick="confirmCancelOrder"
             android:text="@string/confirm_pedido"
             android:textAlignment="center"
