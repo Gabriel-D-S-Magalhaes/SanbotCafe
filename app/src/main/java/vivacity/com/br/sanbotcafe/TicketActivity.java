@@ -277,6 +277,8 @@ public class TicketActivity extends TopBaseActivity implements
     private void checkSpeech(ArrayList<String> resultados) {
         for (String resultado : resultados) {
             switch (resultado) {
+                case "Cancelo":
+                case "cancelo":
                 case "cancelar":
                 case "Cancelar":
                 case "Quero cancelar":
@@ -287,11 +289,21 @@ public class TicketActivity extends TopBaseActivity implements
                 case "cancele":
                 case "Não continue":
                 case "não continue":
+                case "Volte":
+                case "volte":
+                case "Voltar":
+                case "voltar":
                     final DialogFragment dialogFragment = new CancelarPedidoDialogFragment();
                     dialogFragment.show(TicketActivity.this.getFragmentManager(),
                             "Cancelar Pedido?");
                     return;
 
+                case "Continuo":
+                case "continuo":
+                case "Confirmo":
+                case "confirmo":
+                case "Próximo":
+                case "próximo":
                 case "confirmar":
                 case "Confirmar":
                 case "Tudo certo":

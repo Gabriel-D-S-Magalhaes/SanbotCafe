@@ -1,9 +1,9 @@
 package vivacity.com.br.sanbotcafe;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -32,18 +32,18 @@ public class CancelarPedidoDialogFragment extends DialogFragment {
 
     // Override the Fragment.onAttach() method to instantiate the CancelarPedidoListener
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
         // Verify that the host activity implements the callback interface
         try {
 
             // Instantiate the CancelarPedidoListener so we can send events to the host
-            cancelarPedidoListener = (CancelarPedidoListener) activity;
+            cancelarPedidoListener = (CancelarPedidoListener) context;
         } catch (ClassCastException e) {
 
             // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(activity.toString() + " deve implementar " + TAG);
+            throw new ClassCastException(context.toString() + " deve implementar " + TAG);
         }
     }
 

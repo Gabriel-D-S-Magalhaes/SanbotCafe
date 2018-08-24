@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by mac on 11/04/18.
  *
- * @author Gabriel Dos Santos Magalhãs
+ * @author Gabriel Dos Santos Magalhães
  */
 public class MySpeechToText implements RecognitionListener {
 

@@ -296,6 +296,12 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
                 case "cancele":
                 case "Não continue":
                 case "não continue":
+                case "cancelo":
+                case "Cancelo":
+                case "Volte":
+                case "volte":
+                case "Voltar":
+                case "voltar":
 
                     final DialogFragment dialogFragment = new CancelarPedidoDialogFragment();
                     dialogFragment.show(ConfirmarPedidoActivity.this.getFragmentManager(),
@@ -304,6 +310,12 @@ public class ConfirmarPedidoActivity extends TopBaseActivity implements
 
                 case "confirmar":
                 case "Confirmar":
+                case "Confirmo":
+                case "confirmo":
+                case "Próximo":
+                case "próximo":
+                case "Continuo":
+                case "continuo":
                 case "Tudo certo":
                 case "tudo certo":
                 case "Continuar":
