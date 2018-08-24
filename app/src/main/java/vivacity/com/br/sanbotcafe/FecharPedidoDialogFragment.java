@@ -1,9 +1,9 @@
 package vivacity.com.br.sanbotcafe;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -32,17 +32,17 @@ public class FecharPedidoDialogFragment extends DialogFragment {
 
     // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
         // Verify that the host activity implements the callback interface
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
-            fecharPedidoListener = (FecharPedidoListener) activity;
+            fecharPedidoListener = (FecharPedidoListener) context;
         } catch (ClassCastException e) {
 
             // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(activity.toString()
+            throw new ClassCastException(context.toString()
                     + " deve implementar FecharPedidoDialogFragment");
         }
     }
